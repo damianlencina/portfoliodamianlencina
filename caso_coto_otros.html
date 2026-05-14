@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caso 03 — Otros cursos COTO · Damián Lencina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* === Estilos específicos de la página === */
+
+  .case-hero {
+    padding: 100px 24px 80px;
+    position: relative;
+    z-index: 2;
+    background: var(--light);
+  }
+  .case-meta {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .case-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid var(--line-light);
+    border-radius: 100px;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .case-meta-item span { color: var(--burgundy); font-weight: 500; }
+  .case-meta-item span::after { content: ' ·'; }
+
+  .case-hero h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: clamp(40px, 8vw, 72px);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    margin-bottom: 28px;
+    color: var(--ink);
+    max-width: 1300px;
+  }
+  .case-hero h1 em { font-style: italic; color: var(--burgundy); font-weight: 600; }
+
+  .case-subtitle {
+    max-width: 720px;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 40px;
+  }
+  .case-subtitle strong { color: var(--ink); font-weight: 600; }
+  .case-subtitle em { color: var(--burgundy); font-style: italic; font-weight: 500; }
+
+  .related-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: var(--burgundy-soft);
+    border: 1px solid var(--burgundy);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--burgundy);
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .related-link:hover {
+    background: var(--burgundy);
+    color: white;
+  }
+  .related-link::before {
+    content: '←';
+    font-size: 13px;
+  }
+
+  /* CURSOS GRID */
+  .courses-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .course-card {
+    background: white;
+    border: 1px solid var(--line-light);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 8px 24px rgba(0,0,0,0.03);
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+    overflow: hidden;
+    position: relative;
+  }
+  .course-card:hover {
+    border-color: var(--burgundy);
+    transform: translateY(-2px);
+  }
+  .course-card.placeholder {
+    background: linear-gradient(135deg, var(--light-warm), var(--light-deep));
+    border: 1px dashed var(--line-light-strong);
+    box-shadow: none;
+  }
+  .course-card.placeholder:hover {
+    transform: none;
+    border-color: var(--line-light-strong);
+  }
+
+  .course-imgs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    aspect-ratio: 16/9;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .course-imgs > div {
+    overflow: hidden;
+    background: var(--bg-elev);
+  }
+  .course-imgs img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .course-card:hover .course-imgs img { transform: scale(1.04); }
+
+  .course-imgs.placeholder-imgs {
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, rgba(139, 42, 58, 0.08), rgba(22, 32, 64, 0.05));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 14px;
+    grid-template-columns: 1fr;
+  }
+  .placeholder-imgs > div {
+    background: transparent;
+  }
+  .placeholder-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(139, 42, 58, 0.10);
+    border: 1px dashed var(--burgundy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--burgundy);
+    font-size: 22px;
+    margin: 0 auto;
+  }
+  .placeholder-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--burgundy);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .course-tag {
+    display: inline-block;
+    background: var(--burgundy-soft);
+    color: var(--burgundy);
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+  .course-card.placeholder .course-tag {
+    background: rgba(139, 42, 58, 0.05);
+    color: var(--burgundy);
+    border: 1px dashed rgba(139, 42, 58, 0.3);
+  }
+
+  .course-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+  .course-title em { font-style: italic; color: var(--burgundy); font-weight: 500; }
+  .course-card.placeholder .course-title { color: var(--ink-dim); }
+  .course-card.placeholder .course-title em { color: var(--burgundy); }
+
+  .course-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .course-desc strong { color: var(--ink); font-weight: 600; }
+
+  .course-meta {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .course-meta span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink-dim);
+    background: var(--light-warm);
+    padding: 4px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.02em;
+  }
+  .course-card.placeholder .course-meta span {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(139, 42, 58, 0.10);
+  }
+
+  /* MÉTODO RECORDATORIO */
+  .method-reminder {
+    margin-top: 80px;
+    padding: 32px;
+    background: white;
+    border: 1px solid var(--line-light);
+    border-radius: 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  }
+  .method-reminder-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+  .method-reminder-text strong { color: var(--ink); font-weight: 600; }
+  .method-reminder-text em { color: var(--burgundy); font-style: italic; font-weight: 500; }
+  .method-reminder-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--burgundy);
+    color: white;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+  .method-reminder-link:hover {
+    background: var(--ink);
+    gap: 12px;
+  }
+  .method-reminder-link::after { content: '→'; }
+
+  @media (min-width: 700px) {
+    .case-hero { padding: 120px 48px 100px; }
+    .case-hero h1 { font-size: clamp(56px, 8vw, 88px); }
+    .courses-grid { grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+    .course-card { padding: 28px; }
+    .method-reminder {
+      grid-template-columns: 1fr auto;
+      padding: 40px;
+      gap: 32px;
+    }
+  }
+</style>
+
+<!-- Meta tags -->
+<meta name="description" content="El método aplicado a otras áreas del sistema COTO: Salud y Bienestar, Punto de Venta, Productos Frescos. La demostración de que el método escala más allá de un solo proyecto.">
+<meta name="theme-color" content="#8b2a3a">
+<meta name="author" content="Damián Lencina">
+<link rel="canonical" href="https://damilencina.com/caso_coto_otros.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Caso 03 — Otros cursos COTO · Damián Lencina">
+<meta property="og:description" content="El método aplicado a otras áreas del sistema COTO: Salud y Bienestar, Punto de Venta, Productos Frescos. La demostración de que el método escala más allá de un solo proyecto.">
+<meta property="og:url" content="https://damilencina.com/caso_coto_otros.html">
+<meta property="og:image" content="https://damilencina.com/img/og_image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_AR">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Caso 03 — Otros cursos COTO · Damián Lencina">
+<meta name="twitter:description" content="El método aplicado a otras áreas del sistema COTO: Salud y Bienestar, Punto de Venta, Productos Frescos. La demostración de que el método escala más allá de un solo proyecto.">
+<meta name="twitter:image" content="https://damilencina.com/img/og_image.jpg">
+
+<!-- DNS prefetch -->
+<link rel="dns-prefetch" href="https://i.ytimg.com">
+
+</head>
+<body>
+
+<div class="ambient-glow glow-1"></div>
+<div class="ambient-glow glow-2"></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">DL <span>·</span> 2026</a>
+  <div class="nav-mark">Caso 03 <span>·</span> 05</div>
+  <div class="nav-links">
+    <a href="index.html#trabajo">Trabajo</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="index.html#contacto">Contacto</a>
+  </div>
+</nav>
+
+<!-- BARRA DE PROGRESO -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- PAGE TRANSITION IN -->
+<div class="page-transition" id="pageTransition">
+  <div class="page-transition-mark">DL · 2026</div>
+</div>
+
+
+<!-- HERO claro -->
+<section class="case-hero">
+  <div class="case-meta">
+    <div class="case-meta-item"><span>Cliente</span> COTO CICSA</div>
+    <div class="case-meta-item"><span>Tipo</span> Cursos del sistema</div>
+    <div class="case-meta-item"><span>Período</span> 2019 — Hoy</div>
+  </div>
+
+  <a href="caso_coto.html" class="related-link">← Caso 02: Medios de Pago en detalle</a>
+
+  <h1>Otros cursos<br>del <em>mismo sistema</em>.</h1>
+
+  <p class="case-subtitle">
+    Una selección de cursos producidos para distintas áreas de COTO CICSA. <strong>El mismo flujo de cuatro etapas</strong> aplicado a contenidos diversos: cada curso adapta su dirección de arte y producción audiovisual al área específica, manteniendo la <em>cohesión del sistema</em>.
+  </p>
+</section>
+
+<!-- transición claro → cálido -->
+<div class="transition-down-warm"></div>
+
+<!-- CURSOS (cálido) -->
+<section class="bg-warm">
+  <div class="section-header">
+    <div class="section-tag">01 · Cursos secundarios</div>
+    <h2 class="section-h">El método aplicado<br>a otras <em>áreas</em>.</h2>
+    <p class="section-lead">
+      Cada curso es un proyecto autocontenido con sus propias decisiones visuales y narrativas. Aquí algunos ejemplos representativos del sistema.
+    </p>
+  </div>
+
+  <div class="courses-grid reveal-stagger">
+    <!-- Salud y Bienestar Laboral -->
+    <div class="course-card tilt-card">
+      <div class="course-imgs">
+        <div><img src="img/02_curso_interno.jpg" loading="lazy" decoding="async" width="1840" height="870" alt="Prevención bienestar laboral"></div>
+        <div><img src="img/frame_03_analisis.jpg" loading="lazy" decoding="async" width="934" height="521" alt="Frame video"></div>
+      </div>
+      <div class="course-tag">Recursos Humanos · 2024</div>
+      <h3 class="course-title">Prevención <em>bienestar laboral</em></h3>
+      <p class="course-desc">
+        Curso para todo el personal sobre enfermedades no transmisibles, factores de riesgo y prevención cotidiana. Con <strong>video propio de cuarenta y nueve segundos</strong> integrando presentación a cámara y animación gráfica.
+      </p>
+      <div class="course-meta">
+        <span>Recursos Humanos</span>
+        <span>Video 00:49</span>
+        <span>2 unidades</span>
+      </div>
+    </div>
+
+    <!-- Línea de Ventas — sistema completo -->
+    <div class="course-card tilt-card">
+      <div class="course-imgs">
+        <div><img src="img/10_categorias_cajas.jpg" loading="lazy" decoding="async" width="1280" height="720" alt="Línea de Ventas — 11 cursos del área en Moodle"></div>
+        <div><img src="img/despues_storyline_portada.jpg" loading="lazy" decoding="async" width="1280" height="720" alt="Portada Medios de Pago — Storyline"></div>
+      </div>
+      <div class="course-tag">Línea de Cajas · 2024—Hoy</div>
+      <h3 class="course-title">Sistema <em>Cajas</em></h3>
+      <p class="course-desc">
+        Plan de formación integral del área. <strong>Once cursos articulados</strong> que cubren todo el recorrido del puesto, desde inducción hasta especializaciones. <a href="caso_coto.html" class="inline-link">Medios de Pago</a> es el primer curso del sistema producido bajo el nuevo estándar visual.
+      </p>
+      <div class="course-meta">
+        <span>11 cursos</span>
+        <span>Plan de carrera</span>
+        <span>Nuevo estándar</span>
+      </div>
+    </div>
+
+    <!-- Productos Frescos — sistema completo -->
+    <div class="course-card tilt-card">
+      <div class="course-imgs">
+        <div><img src="img/11_categorias_frescos.jpg" loading="lazy" decoding="async" width="1280" height="720" alt="Productos Frescos — 8 cursos del área en Moodle"></div>
+        <div><img src="img/13_coto_rodaje_pescaderia.jpg" loading="lazy" decoding="async" width="1280" height="720" alt="Rodaje en pescadería de COTO"></div>
+      </div>
+      <div class="course-tag">Perecederos · 2023—Hoy</div>
+      <h3 class="course-title">Sistema <em>Frescos</em></h3>
+      <p class="course-desc">
+        Área de perecederos: sectores especializados de productos frescos. <strong>Ocho cursos</strong> con producción audiovisual filmada en planta — porque manipular alimentos frescos no se aprende con bullets, sino viendo cómo se hace.
+      </p>
+      <div class="course-meta">
+        <span>8 cursos</span>
+        <span>Rodajes en planta</span>
+        <span>Cuatro especialidades</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recordatorio del método -->
+  <div class="method-reminder reveal">
+    <div class="method-reminder-text">
+      <strong>El método unificado.</strong> Todos los cursos del sistema atraviesan el mismo flujo de cuatro etapas — guion, diseño visual, armado interactivo y producción audiovisual — adaptado al contenido específico de cada área. <em>Eso es lo que hace que la calidad escale.</em>
+    </div>
+    <a href="caso_coto.html#proceso" class="method-reminder-link">Ver el método</a>
+  </div>
+</section>
+
+<!-- transición cálido → oscuro -->
+<div class="transition-down-dark"></div>
+
+<!-- CIERRE (oscuro) -->
+<section class="closing">
+  <p class="closing-quote">
+    "Un sistema no se demuestra con un caso. Se demuestra cuando <em>el método</em> sobrevive a contenidos distintos."
+  </p>
+  <div class="closing-author">Sobre la escala</div>
+</section>
+
+<!-- transición → oscuro -->
+<div class="transition-down-dark"></div>
+
+<section class="bg-dark footer-cta">
+  <div class="reveal">
+    <div class="footer-cta-tag">Contacto</div>
+    <h2>¿Tenés un proyecto<br>de formación que <em>merece</em><br>ser una experiencia?</h2>
+    <p class="footer-cta-sub">Si buscás diseño instruccional, producción audiovisual o una mirada integral sobre tu e-learning, hablemos.</p>
+    <div class="contact-options">
+      <a href="mailto:dami.lencina21@gmail.com" class="cta-btn">Escribime por mail</a>
+      <a href="https://www.linkedin.com/in/damian-ezequiel-lencina/" target="_blank" rel="noopener" class="cta-btn cta-btn--outline">LinkedIn</a>
+    </div>
+    <div class="footer-foot">
+      <div>© <span class="footer-year">2026</span> · Damián Lencina</div>
+      <div>Buenos Aires · Argentina</div>
+      <div>
+        <a href="https://www.linkedin.com/in/damian-ezequiel-lencina/" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+        · 
+        <a href="https://www.instagram.com/magoyacine" target="_blank" rel="noopener" class="footer-link">Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-nav">
+  <a href="caso_coto.html">← Caso anterior</a>
+  <a href="caso_magoya.html">Siguiente caso →</a>
+</div>
+
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <div class="lightbox-img-wrap"><img id="lightboxImg" src="" alt=""></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
