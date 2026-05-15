@@ -3339,3 +3339,61 @@ p,
   padding: 20px;
   gap: 6px;
 }
+
+/* ── VIDEO PLACEHOLDER ── */
+.video-placeholder-section {
+  padding: var(--section-pad-v) var(--side-pad);
+}
+.video-placeholder {
+  max-width: var(--content-width);
+  margin: var(--gap-l) auto 0;
+}
+.video-placeholder-inner {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--light-warm);
+  border: 2px dashed var(--line-light-strong);
+  border-radius: var(--radius-l);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-s);
+  transition: border-color 0.3s var(--ease-out), background 0.3s;
+}
+.video-placeholder-inner:hover {
+  border-color: var(--burgundy);
+  background: var(--burgundy-soft);
+}
+.video-placeholder-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--burgundy);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  padding-left: 4px;
+  opacity: 0.6;
+  transition: opacity 0.3s, transform 0.3s var(--ease-out);
+}
+.video-placeholder-inner:hover .video-placeholder-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+.video-placeholder-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: var(--type-h4);
+  color: var(--ink-soft);
+  letter-spacing: -0.02em;
+}
+.video-placeholder-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--type-label);
+  color: var(--ink-dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
