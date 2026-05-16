@@ -756,3 +756,359 @@ document.querySelectorAll('[data-carousel-b]').forEach(wrap => {
     }
   });
 })();
+
+// ============================================================
+// CURSOR PERSONALIZADO
+// ============================================================
+(function setupCursor() {
+  if (window.matchMedia('(pointer: coarse)').matches) return; // no en touch
+  const cursor = document.createElement('div');
+  cursor.className = 'custom-cursor';
+  document.body.appendChild(cursor);
+
+  let mx = -100, my = -100;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  // Hover en links y botones
+  document.addEventListener('mouseover', e => {
+    if (e.target.closest('a, button, [role="button"], .tilt-card, .quiz-btn')) {
+      cursor.classList.add('cursor-hover');
+    }
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest('a, button, [role="button"], .tilt-card, .quiz-btn')) {
+      cursor.classList.remove('cursor-hover');
+    }
+  });
+
+  document.addEventListener('mousedown', () => cursor.classList.add('cursor-click'));
+  document.addEventListener('mouseup', () => cursor.classList.remove('cursor-click'));
+})();
+
+// ============================================================
+// QUIZ DE ENTRADA
+// ============================================================
+(function setupQuiz() {
+  const btns = document.querySelectorAll('.quiz-btn');
+  if (!btns.length) return;
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.target;
+      const msg = btn.dataset.msg;
+
+      // Feedback visual
+      btns.forEach(b => b.style.opacity = '0.4');
+      btn.style.opacity = '1';
+      btn.style.borderColor = 'rgba(212,160,168,0.7)';
+
+      // Toast con el mensaje
+      const toast = document.createElement('div');
+      toast.style.cssText = `
+        position:fixed; bottom:32px; left:50%; transform:translateX(-50%);
+        background:var(--burgundy); color:white; padding:12px 24px;
+        border-radius:100px; font-size:14px; font-weight:500;
+        z-index:9999; box-shadow:0 4px 20px rgba(0,0,0,0.3);
+        animation: fadeInUp 0.3s ease both;
+      `;
+      toast.textContent = msg;
+      document.body.appendChild(toast);
+
+      // Scroll al target
+      setTimeout(() => {
+        const el = document.querySelector(target);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => toast.remove(), 2500);
+      }, 400);
+    });
+  });
+})();
+
+// ============================================================
+// MODO OSCURO TOGGLE
+// ============================================================
+(function setupDarkMode() {
+  const toggle = document.createElement('button');
+  toggle.className = 'dark-mode-toggle';
+  toggle.setAttribute('aria-label', 'Alternar modo oscuro');
+  toggle.setAttribute('title', 'Modo oscuro');
+  toggle.innerHTML = '🌙';
+  document.body.appendChild(toggle);
+
+  const saved = localStorage.getItem('dl-dark-mode');
+  if (saved === 'true') {
+    document.body.classList.add('dark-mode');
+    toggle.innerHTML = '☀️';
+  }
+
+  toggle.addEventListener('click', () => {
+    const isDark = document.body.classList.toggle('dark-mode');
+    toggle.innerHTML = isDark ? '☀️' : '🌙';
+    localStorage.setItem('dl-dark-mode', isDark);
+  });
+})();
+
+// ============================================================
+// EASTER EGG — Claqueta de cine al llegar al final del scroll
+// ============================================================
+(function setupClapperboard() {
+  let triggered = false;
+
+  // Crear el audio con Web Audio API (claqueta sintética, sin archivo externo)
+  function playClap() {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+
+      // Golpe seco de claqueta
+      const buf = ctx.createBuffer(1, ctx.sampleRate * 0.15, ctx.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let i = 0; i < data.length; i++) {
+        const t = i / ctx.sampleRate;
+        data[i] = Math.random() * 2 - 1;
+        data[i] *= Math.exp(-t * 60); // decay rápido
+      }
+      const src = ctx.createBufferSource();
+      src.buffer = buf;
+      const gain = ctx.createGain();
+      gain.gain.value = 0.4;
+      src.connect(gain);
+      gain.connect(ctx.destination);
+      src.start();
+    } catch(e) {}
+  }
+
+  // Detectar over-scroll (efecto rebote en el footer)
+  const footer = document.querySelector('.footer-cta');
+  if (!footer) return;
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !triggered) {
+        triggered = true;
+
+        // Toast de claqueta
+        setTimeout(() => {
+          playClap();
+          const toast = document.createElement('div');
+          toast.style.cssText = `
+            position:fixed; bottom:80px; left:50%; transform:translateX(-50%);
+            background:#1a1a24; color:#e8e4de; padding:10px 20px;
+            border-radius:100px; font-size:13px; font-family:'JetBrains Mono',monospace;
+            letter-spacing:0.12em; z-index:9999;
+            border:1px solid rgba(232,228,222,0.15);
+            animation:fadeInUp 0.3s ease both;
+            pointer-events:none;
+          `;
+          toast.textContent = '🎬  ¡Fin del portfolio! · DL · 2026';
+          document.body.appendChild(toast);
+          setTimeout(() => {
+            toast.style.transition = 'opacity 0.5s';
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 500);
+          }, 2800);
+        }, 300);
+      }
+    });
+  }, { threshold: 0.85 });
+
+  obs.observe(footer);
+})();
+
+// ============================================================
+// FADE IN UP (keyframe para toasts)
+// ============================================================
+(function injectToastKeyframe() {
+  if (document.getElementById('dl-toast-kf')) return;
+  const s = document.createElement('style');
+  s.id = 'dl-toast-kf';
+  s.textContent = `@keyframes fadeInUp { from { opacity:0; transform:translate(-50%,12px); } to { opacity:1; transform:translate(-50%,0); } }`;
+  document.head.appendChild(s);
+})();
+
+// ============================================================
+// HERO PILLS — navegación con scroll suave y toast
+// ============================================================
+(function setupHeroPills() {
+  const pills = document.querySelectorAll('.hero-pill-nav');
+  if (!pills.length) return;
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const targetSel = pill.dataset.target;
+      const msg = pill.dataset.msg;
+
+      // Toast
+      const toast = document.createElement('div');
+      toast.style.cssText = `
+        position:fixed; bottom:32px; left:50%; transform:translateX(-50%);
+        background:var(--burgundy); color:white; padding:12px 24px;
+        border-radius:100px; font-size:14px; font-weight:500;
+        z-index:9999; box-shadow:0 4px 20px rgba(0,0,0,0.3);
+        animation: fadeInUp 0.3s ease both; white-space:nowrap;
+      `;
+      toast.textContent = msg;
+      document.body.appendChild(toast);
+
+      // Scroll
+      setTimeout(() => {
+        const el = document.querySelector(targetSel);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(() => toast.remove(), 2500);
+      }, 200);
+    });
+  });
+})();
+
+// ============================================================
+// HAMBURGER MENU
+// ============================================================
+(function setupHamburger() {
+  const btn = document.getElementById('navHamburger');
+  const links = document.getElementById('navLinks');
+  if (!btn || !links) return;
+
+  function openMenu() {
+    btn.setAttribute('aria-expanded', 'true');
+    links.classList.add('nav-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    btn.setAttribute('aria-expanded', 'false');
+    links.classList.remove('nav-open');
+    document.body.style.overflow = '';
+  }
+
+  btn.addEventListener('click', () => {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  // Cerrar al clickear un link
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeMenu);
+  });
+
+  // Cerrar con Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  // Cerrar si el viewport se agranda (orientación)
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) closeMenu();
+  });
+})();
+
+// ============================================================
+// AVATAR REPRODUCTOR — YouTube IFrame API
+// ============================================================
+(function setupAvatarPlayer() {
+  const btn = document.getElementById('avatarPlayer');
+  const modal = document.getElementById('videoModal');
+  const backdrop = document.getElementById('videoModalBackdrop');
+  const closeBtn = document.getElementById('videoModalClose');
+  if (!btn || !modal) return;
+
+  // ── ID del video de YouTube ──
+  // Reemplazá 'TU_VIDEO_ID' con el ID real cuando tengas el video subido
+  // El ID es la parte después de ?v= en la URL de YouTube
+  // Ejemplo: https://youtu.be/dQw4w9WgXcQ → ID = dQw4w9WgXcQ
+  const YT_VIDEO_ID = 'jO4W6TPkSD8'; // PLACEHOLDER: reemplazá con tu video cuando lo tengas
+
+  let player = null;
+  let ytReady = false;
+
+  // Cargar la API de YouTube de forma diferida (solo cuando se necesita)
+  function loadYTApi() {
+    if (document.getElementById('yt-api-script')) return;
+    const s = document.createElement('script');
+    s.id = 'yt-api-script';
+    s.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(s);
+  }
+
+  // Callback global que llama YouTube cuando la API está lista
+  window.onYouTubeIframeAPIReady = function() {
+    ytReady = true;
+  };
+
+  function createPlayer() {
+    player = new YT.Player('ytPlayer', {
+      videoId: YT_VIDEO_ID,
+      playerVars: {
+        autoplay: 1,
+        rel: 0,          // No mostrar videos relacionados al terminar
+        modestbranding: 1,
+        playsinline: 1,
+        cc_load_policy: 0,
+      },
+      events: {
+        onStateChange: function(e) {
+          // YT.PlayerState.ENDED = 0
+          if (e.data === 0) {
+            closeModal();
+          }
+        }
+      }
+    });
+  }
+
+  function openModal() {
+    modal.classList.add('modal-open');
+    document.body.style.overflow = 'hidden';
+
+    if (ytReady) {
+      // API ya cargada — crear o reproducir
+      if (player && player.playVideo) {
+        player.seekTo(0);
+        player.playVideo();
+      } else {
+        createPlayer();
+      }
+    } else {
+      // API no cargada todavía — cargarla y esperar
+      loadYTApi();
+      const waitForYT = setInterval(() => {
+        if (window.YT && window.YT.Player) {
+          clearInterval(waitForYT);
+          ytReady = true;
+          createPlayer();
+        }
+      }, 100);
+    }
+  }
+
+  function closeModal() {
+    modal.classList.remove('modal-open');
+    document.body.style.overflow = '';
+    if (player && player.pauseVideo) {
+      player.pauseVideo();
+    }
+  }
+
+  // Abrir
+  btn.addEventListener('click', () => {
+    loadYTApi(); // Precarga apenas clickea
+    openModal();
+  });
+
+  // Cerrar con botón X
+  closeBtn.addEventListener('click', closeModal);
+
+  // Cerrar con backdrop
+  backdrop.addEventListener('click', closeModal);
+
+  // Cerrar con Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('modal-open')) {
+      closeModal();
+    }
+  });
+
+  // Precarga la API al hacer hover sobre el avatar (optimización)
+  btn.addEventListener('mouseenter', loadYTApi, { once: true });
+})();
