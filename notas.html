@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('dl-theme');
+    if(!t){ t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    if(t==='dark'){ document.documentElement.setAttribute('data-theme','dark'); }
+  }catch(e){}
+})();
+</script>
+  <meta name="theme-color" content="#ffffff">
+<title>Notas — Pensamiento en proceso · Damián Lencina</title>
+<meta name="description" content="Notas sobre e-learning corporativo, diseño instruccional, producción audiovisual e IA aplicada a la formación.">
+<meta name="author" content="Damián Lencina">
+
+<link rel="canonical" href="https://damianlencina.com/notas.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Damián Lencina · Portfolio">
+<meta property="og:url" content="https://damianlencina.com/notas.html">
+<meta property="og:title" content="Notas — Pensamiento en proceso · Damián Lencina">
+<meta property="og:description" content="Notas sobre e-learning corporativo, diseño instruccional, producción audiovisual e IA aplicada a la formación.">
+<meta property="og:image" content="https://damianlencina.com/img/og_image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Notas — Damián Lencina">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Notas — Pensamiento en proceso · Damián Lencina">
+<meta name="twitter:description" content="Notas sobre e-learning corporativo, diseño instruccional, producción audiovisual e IA aplicada a la formación.">
+<meta name="twitter:image" content="https://damianlencina.com/img/og_image.jpg">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Notas — Damián Lencina",
+  "description": "Notas sobre e-learning corporativo, diseño instruccional, producción audiovisual e IA aplicada a la formación.",
+  "url": "https://damianlencina.com/notas.html",
+  "author": { "@type": "Person", "name": "Damián Lencina" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="style.css">
+<link rel="stylesheet" href="style.css">
+  <style>
+    .notas-hero {
+      padding: 160px var(--side-pad) 80px;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      position: relative;
+    }
+    .notas-hero h1 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: var(--t-h1);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      margin-bottom: 32px;
+      max-width: 18ch;
+    }
+    .notas-hero h1 .grad {
+      background: var(--aurora-grad-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .notas-hero p {
+      font-size: var(--t-lead);
+      line-height: 1.5;
+      color: var(--ink-mid);
+      max-width: 60ch;
+    }
+
+    .notas-wrap {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .nota-card {
+      background: var(--bg);
+      border: 1px solid var(--ink-line-soft);
+      border-radius: var(--radius-l);
+      padding: 40px;
+      transition: border-color 0.3s, transform 0.3s var(--ease-out), box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .nota-card:hover {
+      border-color: var(--ink-line);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-m);
+    }
+    .nota-card--featured {
+      background: var(--bg-dark);
+      color: var(--ink-invert);
+      border-color: transparent;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      padding: 48px;
+    }
+    .nota-card--featured::before {
+      content: '';
+      position: absolute;
+      top: -40%; right: -20%;
+      width: 70%; height: 80%;
+      background: radial-gradient(ellipse, rgba(139,92,246,0.35) 0%, rgba(99,102,241,0.15) 40%, transparent 70%);
+      filter: blur(50px);
+      pointer-events: none;
+    }
+    .nota-card--featured > * { position: relative; z-index: 1; }
+
+    .nota-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      font-family: var(--type-mono);
+      font-size: var(--t-tag);
+      color: var(--ink-dim);
+    }
+    .nota-card--featured .nota-meta { color: rgba(255,255,255,0.5); }
+    .nota-tag {
+      padding: 4px 10px;
+      background: var(--bg-tint);
+      color: var(--ink);
+      border-radius: var(--radius-s);
+      letter-spacing: 0.02em;
+    }
+    .nota-card--featured .nota-tag {
+      background: var(--aurora-grad);
+      color: var(--bg);
+    }
+    .nota-date { letter-spacing: 0.02em; }
+    .nota-time { letter-spacing: 0.02em; }
+
+    .nota-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: var(--t-h2);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .nota-card--featured .nota-title { color: var(--ink-invert); }
+    .nota-title .grad {
+      background: var(--aurora-grad-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nota-desc {
+      font-size: var(--t-body-l);
+      line-height: 1.6;
+      color: var(--ink-mid);
+      margin-bottom: 20px;
+    }
+    .nota-card--featured .nota-desc { color: rgba(255,255,255,0.75); }
+
+    .nota-body {
+      font-size: var(--t-body);
+      line-height: 1.7;
+      color: rgba(255,255,255,0.7);
+    }
+    .nota-body p { margin-bottom: 16px; }
+
+    .nota-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--t-small);
+      font-weight: 500;
+      color: var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+      transition: gap 0.2s var(--ease-out);
+    }
+    .nota-card:hover .nota-cta { gap: 12px; }
+    .nota-card--featured .nota-cta {
+      color: var(--ink-invert);
+      border-bottom-color: var(--ink-invert);
+    }
+
+    .notas-wip {
+      max-width: var(--content-width);
+      margin: 64px auto 0;
+      padding: 32px 40px;
+      background: var(--bg-tint);
+      border: 1px solid var(--ink-line-soft);
+      border-radius: var(--radius-l);
+      text-align: center;
+    }
+    .notas-wip p {
+      font-size: var(--t-body);
+      color: var(--ink-mid);
+      line-height: 1.5;
+    }
+    .notas-wip a {
+      color: var(--ink);
+      font-weight: 600;
+      border-bottom: 1px solid var(--ink-line);
+      transition: border-color 0.2s;
+    }
+    .notas-wip a:hover { border-bottom-color: var(--ink); }
+
+    @media (max-width: 720px) {
+      .nota-card--featured {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 32px 24px;
+      }
+      .nota-card { padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body class="case-page">
+<a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-mark">DL <span>·</span> Notas</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="index.html#trabajo">Trabajo</a></li>
+    <li><a href="metodo.html">Método</a></li>
+    <li><a href="notas.html">Notas</a></li>
+  </ul>
+  <div class="nav-end">
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema claro/oscuro" type="button">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- HERO -->
+<section id="main" class="notas-hero">
+  <a href="index.html" class="case-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Volver al portfolio
+  </a>
+
+  <div class="case-tag">Notas · Pensamiento en proceso</div>
+
+  <h1>
+    Lo que pienso cuando <span class="grad">diseño</span>.
+  </h1>
+
+  <p>
+    No un blog de posteos semanales. Notas sobre e-learning, diseño, producción audiovisual e IA — escritas cuando tengo algo que vale la pena decir.
+  </p>
+</section>
+
+<!-- Notas -->
+<section style="padding: 40px var(--side-pad) var(--gap-3xl);">
+  <div class="notas-wrap reveal-stagger">
+
+    <!-- Nota featured -->
+    <a href="nota_video.html" class="nota-card nota-card--featured" style="text-decoration: none;">
+      <div>
+        <div class="nota-meta">
+          <span class="nota-tag">E-Learning</span>
+          <span class="nota-date">Mayo 2026</span>
+          <span class="nota-time">· 4 min de lectura</span>
+        </div>
+        <h2 class="nota-title">Por qué el video corporativo suele ser un <span class="grad">desastre</span>.</h2>
+        <p class="nota-desc">
+          La mayoría de los videos de capacitación son aburridos por las mismas tres razones. No es presupuesto, no es tecnología. Es <strong>criterio narrativo</strong> — o la falta de él. Después de producir decenas de videos en planta, aprendí exactamente qué los hace funcionar o fallar.
+        </p>
+        <span class="nota-cta">Leer nota →</span>
+      </div>
+      <div class="nota-body">
+        <p>El primer error es confundir información con relato. Un video que lista los pasos de un proceso es un manual en movimiento, no un video. El segundo es filmar a alguien que no quiere estar frente a la cámara — se nota en cada cuadro. El tercero, y el más difícil de corregir, es no tener una pregunta central: ¿qué quiero que el espectador sienta al terminar de verlo?</p>
+        <p>Estas no son observaciones abstractas. Son diagnósticos que hice sobre videos que existían antes de que yo llegara al área, y sobre primeros intentos propios que no funcionaron. La diferencia entre un video que se ve hasta el final y uno que se cierra a los 40 segundos no está en la resolución ni en la música — está en si hay algo que querer saber.</p>
+      </div>
+    </a>
+
+    <!-- Nota 2 -->
+    <a href="nota_cine.html" class="nota-card" style="text-decoration: none;">
+      <div class="nota-meta">
+        <span class="nota-tag">Diseño</span>
+        <span class="nota-date">Abril 2026</span>
+        <span class="nota-time">· 3 min</span>
+      </div>
+      <h2 class="nota-title">Lo que el cine me enseñó sobre el <span class="grad">e-learning</span>.</h2>
+      <p class="nota-desc">
+        Hay una pregunta que me hago antes de empezar cualquier curso: ¿qué historia quiero contar? No qué contenidos quiero transmitir. <strong>Qué historia.</strong> Esa diferencia cambia todo lo que viene después.
+      </p>
+      <span class="nota-cta">Leer nota →</span>
+    </a>
+
+    <!-- Nota 3 -->
+    <a href="nota_evaluacion.html" class="nota-card" style="text-decoration: none;">
+      <div class="nota-meta">
+        <span class="nota-tag">Diseño instruccional</span>
+        <span class="nota-date">Mayo 2026</span>
+        <span class="nota-time">· 5 min</span>
+      </div>
+      <h2 class="nota-title">Cómo diseñar una evaluación que no sea un <span class="grad">trámite</span>.</h2>
+      <p class="nota-desc">
+        La evaluación es la parte más subestimada del diseño instruccional. La mayoría son un formulario disfrazado de aprendizaje. <strong>Hay tres cosas que cambian eso</strong> — y ninguna requiere tecnología sofisticada.
+      </p>
+      <span class="nota-cta">Leer nota →</span>
+    </a>
+
+  </div>
+
+  <!-- WIP -->
+  <div class="notas-wip reveal">
+    <p>Más notas en proceso. <strong>Si querés que te avise cuando salgan</strong>, escribime a <a href="mailto:dami.lencina21@gmail.com">dami.lencina21@gmail.com</a>.</p>
+  </div>
+</section>
+
+<!-- Footer CTA -->
+<section class="footer-cta" id="contacto">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-cta-tag">Contacto</div>
+      <h2>¿Tenés un proyecto de formación que <span class="grad">merece</span> ser una experiencia?</h2>
+      <p class="footer-cta-sub">Trabajo con empresas que quieren ir más allá de las diapositivas.</p>
+      <div class="contact-actions">
+        <a href="mailto:dami.lencina21@gmail.com" class="btn btn-light">
+          Escribime
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/damian-ezequiel-lencina/" target="_blank" rel="noopener" class="btn btn-dark-ghost">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="footer-fin">
+      <div class="footer-fin-text">End of file</div>
+      <div class="footer-fin-meta">© <span class="footer-year">2026</span> · DL · v2.0/Z</div>
+    </div>
+  </div>
+</section>
+
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>

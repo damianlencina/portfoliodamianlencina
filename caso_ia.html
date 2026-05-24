@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('dl-theme');
+    if(!t){ t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    if(t==='dark'){ document.documentElement.setAttribute('data-theme','dark'); }
+  }catch(e){}
+})();
+</script>
+  <meta name="theme-color" content="#ffffff">
+<title>Caso 04 — Aprender a crear con IA · Damián Lencina</title>
+<meta name="description" content="Cómo se construyó este portfolio en conversación con IA. El meta-caso: criterio editorial humano + ejecución técnica con Claude.">
+<meta name="author" content="Damián Lencina">
+
+<link rel="canonical" href="https://damianlencina.com/caso_ia.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Damián Lencina · Portfolio">
+<meta property="og:url" content="https://damianlencina.com/caso_ia.html">
+<meta property="og:title" content="Caso 04 — Aprender a crear con IA · Damián Lencina">
+<meta property="og:description" content="Cómo se construyó este portfolio en conversación con IA. El meta-caso: criterio editorial humano + ejecución técnica con Claude.">
+<meta property="og:image" content="https://damianlencina.com/img/og_image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Caso 04 — Portfolio con IA">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Caso 04 — Aprender a crear con IA · Damián Lencina">
+<meta name="twitter:description" content="Cómo se construyó este portfolio en conversación con IA. El meta-caso: criterio editorial humano + ejecución técnica con Claude.">
+<meta name="twitter:image" content="https://damianlencina.com/img/og_image.jpg">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Portfolio diseñado con IA",
+  "description": "Cómo se construyó este portfolio en conversación con IA. El meta-caso: criterio editorial humano + ejecución técnica con Claude.",
+  "url": "https://damianlencina.com/caso_ia.html",
+  "author": {
+    "@type": "Person",
+    "name": "Damián Lencina",
+    "url": "https://damianlencina.com/"
+  },
+  "image": "https://damianlencina.com/img/og_image.jpg"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="style.css">
+<link rel="stylesheet" href="style.css">
+  <style>
+    /* Chat log estilo conversación IA */
+    .chat-log {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 32px;
+      background: var(--bg-tint);
+      border-radius: var(--radius-l);
+      border: 1px solid var(--ink-line-soft);
+    }
+    .chat-msg {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .chat-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--type-mono);
+      font-size: 12px;
+      font-weight: 600;
+      flex-shrink: 0;
+      background: var(--bg);
+      color: var(--ink);
+      border: 1px solid var(--ink-line);
+    }
+    .chat-msg.claude .chat-avatar {
+      background: var(--aurora-grad);
+      color: var(--bg);
+      border-color: transparent;
+    }
+    .chat-bubble {
+      background: var(--bg);
+      border: 1px solid var(--ink-line-soft);
+      border-radius: var(--radius-m);
+      padding: 12px 16px;
+      font-size: var(--t-body);
+      line-height: 1.5;
+      color: var(--ink-soft);
+      max-width: 100%;
+    }
+    .chat-msg.claude .chat-bubble {
+      background: var(--bg-dark);
+      color: var(--ink-invert);
+      border-color: transparent;
+    }
+    .chat-time {
+      font-family: var(--type-mono);
+      font-size: var(--t-micro);
+      color: var(--ink-dim);
+      margin-top: 6px;
+      padding-left: 4px;
+    }
+
+    /* Versions strip — pills futuristas */
+    .versions-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .version-pill {
+      font-family: var(--type-mono);
+      font-size: var(--t-tag);
+      padding: 6px 12px;
+      border-radius: var(--radius-s);
+      background: var(--bg-tint);
+      color: var(--ink-mid);
+      border: 1px solid var(--ink-line-soft);
+    }
+    .version-pill.range {
+      background: var(--bg-dark);
+      color: var(--bg);
+      border-color: transparent;
+    }
+    .version-pill.aurora {
+      background: var(--aurora-grad);
+      color: var(--bg);
+      border-color: transparent;
+      font-weight: 500;
+    }
+
+    /* Process stats */
+    .process-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--ink-line-soft);
+      border-radius: var(--radius-l);
+      overflow: hidden;
+      border: 1px solid var(--ink-line-soft);
+      margin: 48px 0;
+    }
+    .pstat-cell {
+      background: var(--bg);
+      padding: 24px 20px;
+    }
+    .pstat-cell .pstat-value {
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 4px;
+    }
+    .pstat-cell .pstat-value.grad {
+      background: var(--aurora-grad-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .pstat-cell .pstat-label {
+      font-family: var(--type-mono);
+      font-size: var(--t-tag);
+      color: var(--ink-dim);
+      margin-top: 8px;
+    }
+
+    /* Antes / después comparativa */
+    .compare-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 48px 0;
+    }
+    .compare-col {
+      background: var(--bg);
+      border: 1px solid var(--ink-line-soft);
+      border-radius: var(--radius-l);
+      padding: 32px;
+    }
+    .compare-col.after {
+      background: var(--bg-dark);
+      color: var(--ink-invert);
+      border-color: transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .compare-col.after::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -30%;
+      width: 80%; height: 100%;
+      background: radial-gradient(ellipse, rgba(139,92,246,0.3) 0%, transparent 70%);
+      filter: blur(40px);
+      pointer-events: none;
+    }
+    .compare-col.after > * { position: relative; z-index: 1; }
+    .compare-col-label {
+      display: inline-block;
+      font-family: var(--type-mono);
+      font-size: var(--t-tag);
+      padding: 4px 10px;
+      border-radius: var(--radius-s);
+      background: var(--bg-tint);
+      color: var(--ink-mid);
+      margin-bottom: 20px;
+    }
+    .compare-col.after .compare-col-label {
+      background: var(--aurora-grad);
+      color: var(--bg);
+    }
+    .compare-col ul li {
+      font-size: var(--t-body);
+      line-height: 1.6;
+      color: var(--ink-mid);
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 10px;
+    }
+    .compare-col.after ul li { color: rgba(255,255,255,0.75); }
+    .compare-col ul li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10px;
+      width: 8px; height: 1px;
+      background: var(--ink-dim);
+    }
+    .compare-col.after ul li::before { background: rgba(255,255,255,0.4); }
+
+    @media (max-width: 720px) {
+      .compare-cols { grid-template-columns: 1fr; }
+      .process-stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body class="case-page">
+<a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-mark">DL <span>·</span> Caso 04/04</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#sobre">Sobre</a></li>
+    <li><a href="index.html#trabajo">Trabajo</a></li>
+    <li><a href="metodo.html">Método</a></li>
+    <li><a href="notas.html">Notas</a></li>
+  </ul>
+  <div class="nav-end">
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema claro/oscuro" type="button">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- HERO -->
+<section id="main" class="case-hero">
+  <a href="index.html#trabajo" class="case-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Volver al portfolio
+  </a>
+
+  <div class="case-tag">Caso 04 · Claude AI + DL · 2026 · Proceso propio</div>
+
+  <h1 class="case-title">
+    El antes era un mensaje. El después es <span class="grad">esto</span>.
+  </h1>
+
+  <p class="case-lead">
+    Este no es un caso de cliente. Es el meta-caso: cómo se construyó este portfolio — cada página, cada slider, cada token de espaciado — <strong>desde cero, en conversación con IA</strong>. El caso demuestra dos cosas al mismo tiempo: que sé construir experiencias complejas, y que sé usar las herramientas del presente para hacerlo mejor.
+  </p>
+
+  <div class="case-meta">
+    <div class="case-meta-item">
+      <div class="label">Herramienta</div>
+      <div class="value">Claude AI</div>
+    </div>
+    <div class="case-meta-item">
+      <div class="label">Período</div>
+      <div class="value">Enero 2026 — Hoy</div>
+    </div>
+    <div class="case-meta-item">
+      <div class="label">Versión Z</div>
+      <div class="value">v52 / Z</div>
+    </div>
+    <div class="case-meta-item">
+      <div class="label">Output</div>
+      <div class="value">Portfolio completo</div>
+    </div>
+  </div>
+</section>
+
+<!-- KPIs -->
+<div class="case-section">
+  <div class="case-stats-row reveal">
+    <div class="case-stat">
+      <div class="label">Versiones</div>
+      <div class="value grad"><span class="counter" data-target="49">49</span>+</div>
+    </div>
+    <div class="case-stat">
+      <div class="label">Páginas construidas</div>
+      <div class="value"><span class="counter" data-target="6">6</span></div>
+    </div>
+    <div class="case-stat">
+      <div class="label">Peso optimizado</div>
+      <div class="value">−68%</div>
+    </div>
+    <div class="case-stat">
+      <div class="label">Estilos inline</div>
+      <div class="value"><span class="counter" data-target="0">0</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- El antes -->
+<div class="case-section-narrow reveal">
+  <div class="case-section-tag">El antes</div>
+  <h2>No había portfolio. Había una <span class="grad">idea</span>.</h2>
+  <p>El punto de partida no fue un diseño desactualizado ni un código que arreglar. Fue un mensaje. <strong>Sin archivos adjuntos, sin wireframes, sin brief.</strong> Solo la intención de construir algo que contara bien quién es Damián Lencina como profesional.</p>
+</div>
+
+<!-- Chat log: el comienzo -->
+<div class="case-section reveal">
+  <div class="chat-log">
+    <div class="chat-msg">
+      <div class="chat-avatar">DL</div>
+      <div>
+        <div class="chat-bubble">quiero hacer un portfolio</div>
+        <div class="chat-time">El comienzo · v01 · 2026</div>
+      </div>
+    </div>
+    <div class="chat-msg claude">
+      <div class="chat-avatar">C</div>
+      <div>
+        <div class="chat-bubble">Perfecto. Antes de arrancar necesito entender qué querés mostrar y a quién va dirigido. ¿Cuál es tu perfil profesional?</div>
+      </div>
+    </div>
+    <div class="chat-msg">
+      <div class="chat-avatar">DL</div>
+      <div>
+        <div class="chat-bubble">soy diseñador de e-learning corporativo y realizador audiovisual. trabajo en COTO hace 7 años. quiero mostrar mis casos de trabajo</div>
+      </div>
+    </div>
+    <div class="chat-msg claude">
+      <div class="chat-avatar">C</div>
+      <div>
+        <div class="chat-bubble">Tenemos mucho material para trabajar. Propongo empezar por la estructura: cuántos casos, qué jerarquía, qué historia querés que cuente el portfolio como unidad. ¿Arrancamos?</div>
+      </div>
+    </div>
+    <div class="chat-msg">
+      <div class="chat-avatar">DL</div>
+      <div>
+        <div class="chat-bubble">dale</div>
+        <div class="chat-time">Y así empezó todo.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Antes/después comparativa -->
+<div class="case-section reveal">
+  <div class="compare-cols">
+    <div class="compare-col">
+      <div class="compare-col-label">El antes</div>
+      <ul>
+        <li>Un mensaje de texto en un chat</li>
+        <li>Sin archivos, sin diseño, sin código</li>
+        <li>Sin estructura definida</li>
+        <li>Sin imágenes de trabajo</li>
+        <li>Sin sistema visual</li>
+      </ul>
+    </div>
+    <div class="compare-col after">
+      <div class="compare-col-label">El después</div>
+      <ul>
+        <li>6 páginas HTML/CSS/JS completas</li>
+        <li>5 casos documentados con narrativa</li>
+        <li>Sistema de design tokens en :root</li>
+        <li>42 imágenes optimizadas (3.8MB total)</li>
+        <li>Sliders interactivos vanilla JS</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- El método -->
+<div class="case-section-narrow reveal">
+  <div class="case-section-tag">El método</div>
+  <h2>Conversación como <span class="grad">herramienta de diseño</span>.</h2>
+  <p>No fue "pedirle cosas a una IA". Fue un proceso iterativo donde cada intercambio tenía roles claros: <strong>visión editorial y criterio estético de un lado, ejecución técnica y estructura del otro</strong>. La calidad del resultado dependió directamente de la calidad de las preguntas.</p>
+  <p>49 versiones en una conversación continua. Cada bloque con un propósito:</p>
+  <div class="versions-strip">
+    <span class="version-pill aurora">v01–v05</span>
+    <span class="version-pill">Estructura base</span>
+    <span class="version-pill aurora">v06–v12</span>
+    <span class="version-pill">Casos y contenido</span>
+    <span class="version-pill range">v13–v20</span>
+    <span class="version-pill">Imágenes reales</span>
+    <span class="version-pill range">v21–v27</span>
+    <span class="version-pill">Interactividad</span>
+    <span class="version-pill aurora">v28–v33</span>
+    <span class="version-pill">Sistema visual</span>
+    <span class="version-pill range">v34–v40</span>
+    <span class="version-pill">Optimización y tokens</span>
+    <span class="version-pill aurora">v41–v49</span>
+    <span class="version-pill">Videos, refinamiento y publicación</span>
+  </div>
+</div>
+
+<!-- Insights del método -->
+<div class="case-section reveal">
+  <div class="method-grid reveal-stagger">
+    <div class="method-item">
+      <div class="method-num">01 · Aprendizaje</div>
+      <div class="method-title">El feedback preciso acelera</div>
+      <p class="method-desc">"quedó feo" no es feedback útil. "el degradé arranca antes de tiempo y el hero queda atrapado debajo de una franja oscura" sí lo es. A medida que avanzábamos, las iteraciones se volvían más quirúrgicas.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">02 · Aprendizaje</div>
+      <div class="method-title">Romper para aprender</div>
+      <p class="method-desc">La v33 rompió el diseño. El CSS con max-width directo en las secciones limitó también los fondos. Ese error enseñó más sobre el modelo de caja que diez tutoriales.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">03 · Aprendizaje</div>
+      <div class="method-title">El idioma importa</div>
+      <p class="method-desc">"hacelo más chico" puede significar diez cosas. "limitá el ancho del slider a 720px y centralo con margin auto" es una instrucción ejecutable.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">04 · Aprendizaje</div>
+      <div class="method-title">El sistema supera la suma</div>
+      <p class="method-desc">Corregir un espaciado una vez no es suficiente si en otra sección hay otro valor hardcodeado. La v36 introdujo design tokens en :root. Desde ahí, un cambio global cuesta una línea.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Lo que construimos / números -->
+<div class="case-section-narrow reveal">
+  <div class="case-section-tag">Lo que construimos</div>
+  <h2>Números de un proceso <span class="grad">real</span>.</h2>
+  <p>Cada número acá tiene historia. No son métricas de vanidad — son evidencia de decisiones tomadas, problemas resueltos y criterio aplicado.</p>
+</div>
+
+<div class="case-section reveal">
+  <div class="process-stats-grid">
+    <div class="pstat-cell">
+      <div class="pstat-value grad">49</div>
+      <div class="pstat-label">Versiones ZIP</div>
+    </div>
+    <div class="pstat-cell">
+      <div class="pstat-value">6</div>
+      <div class="pstat-label">Páginas HTML</div>
+    </div>
+    <div class="pstat-cell">
+      <div class="pstat-value">42</div>
+      <div class="pstat-label">Imágenes activas</div>
+    </div>
+    <div class="pstat-cell">
+      <div class="pstat-value grad">−68%</div>
+      <div class="pstat-label">Peso (12→3.8MB)</div>
+    </div>
+    <div class="pstat-cell">
+      <div class="pstat-value">2</div>
+      <div class="pstat-label">Sliders interactivos</div>
+    </div>
+    <div class="pstat-cell">
+      <div class="pstat-value">0</div>
+      <div class="pstat-label">Estilos inline</div>
+    </div>
+    <div class="pstat-cell">
+      <div class="pstat-value">27</div>
+      <div class="pstat-label">CSS tokens en :root</div>
+    </div>
+    <div class="pstat-cell">
+      <div class="pstat-value">33</div>
+      <div class="pstat-label">Imgs huérfanas borradas</div>
+    </div>
+  </div>
+</div>
+
+<!-- Intercambios clave -->
+<div class="case-section-narrow reveal">
+  <h3>Los intercambios que <span class="grad">definieron</span> el proceso.</h3>
+</div>
+
+<div class="case-section reveal">
+  <div class="chat-log">
+    <div class="chat-msg">
+      <div class="chat-avatar">DL</div>
+      <div>
+        <div class="chat-bubble">quedó feo che, antes el placeholder estaba mejor. además me gustaría cambiar ese título</div>
+        <div class="chat-time">Iteración 13 · redesign del thumb principal</div>
+      </div>
+    </div>
+    <div class="chat-msg claude">
+      <div class="chat-avatar">C</div>
+      <div>
+        <div class="chat-bubble">Tenés razón en las dos. Vamos por partes: el thumb se ve gigante porque la imagen viene en relación de aspecto muy ancha y rompe la grilla. Solución: limitar el alto y usar object-fit: cover.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="case-section reveal">
+  <div class="chat-log">
+    <div class="chat-msg">
+      <div class="chat-avatar">DL</div>
+      <div>
+        <div class="chat-bubble">creo que se rompió un poco el diseño no? jajaja</div>
+        <div class="chat-time">Iteración 21 · el CSS que se rompió</div>
+      </div>
+    </div>
+    <div class="chat-msg claude">
+      <div class="chat-avatar">C</div>
+      <div>
+        <div class="chat-bubble">El bug raíz: cuando agregué max-width directo a .case-section y .case-hero, esos section también tienen las clases bg-light/bg-dark que pintan el fondo. El max-width limitó el fondo coloreado también, dejando islas y desbordes raros.</div>
+      </div>
+    </div>
+    <div class="chat-msg">
+      <div class="chat-avatar">DL</div>
+      <div>
+        <div class="chat-bubble">ah oki oki</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="case-section reveal">
+  <div class="chat-log">
+    <div class="chat-msg">
+      <div class="chat-avatar">DL</div>
+      <div>
+        <div class="chat-bubble">quiero que alinees todo el portfolio, que cada cosa esté en su respectivo tamaño para que todo tenga un orden visual con alineaciones con sentido. quiero uniformidad, prolijidad de diseñador en todo</div>
+        <div class="chat-time">Iteración 36 · el sistema de tokens</div>
+      </div>
+    </div>
+    <div class="chat-msg claude">
+      <div class="chat-avatar">C</div>
+      <div>
+        <div class="chat-bubble">Había 6 valores distintos de max-width para texto (520, 560, 580, 600, 620, 680px). Todos son ahora var(--text-width) que es 64ch. Si cambiás una variable en :root, aplica a todo el sitio automáticamente.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="case-section reveal">
+  <div class="chat-log">
+    <div class="chat-msg">
+      <div class="chat-avatar">DL</div>
+      <div>
+        <div class="chat-bubble">bieeeeen, ahora tengo una idea más jajajaja — vos y el trabajo que hicimos juntos en este portfolio es nuestro último caso de trabajo, y tenés todo para crearlo!</div>
+        <div class="chat-time">Iteración 38 · el meta-caso</div>
+      </div>
+    </div>
+    <div class="chat-msg claude">
+      <div class="chat-avatar">C</div>
+      <div>
+        <div class="chat-bubble">Jajaja no me la esperaba. Es una idea brillante — y tiene toda la coherencia del mundo dentro del portfolio.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- La tesis -->
+<div class="case-section-narrow reveal">
+  <div class="case-section-tag">La tesis</div>
+  <h2>No es saber los comandos. Es saber <span class="grad">qué pedirle</span>.</h2>
+  <p>El dominio de una herramienta nueva no se mide por la cantidad de prompts que conocés. Se mide por la <strong>claridad con la que podés articular un problema</strong>, la precisión con la que podés evaluar una solución, y la honestidad con la que podés decir "quedó feo, rehacelo".</p>
+
+  <div class="case-highlight">
+    <div class="case-highlight-label">El punto</div>
+    <p>Eso es exactamente lo que hace un buen diseñador instruccional con cualquier tecnología: <strong>no dominar la herramienta, sino dominar el criterio para usarla bien</strong>. La IA no reemplaza el juicio estético, la visión narrativa ni el conocimiento del usuario. Los amplifica — si sabés qué amplificar.</p>
+  </div>
+</div>
+
+<!-- 4 insights finales -->
+<div class="case-section reveal">
+  <div class="method-grid reveal-stagger">
+    <div class="method-item">
+      <div class="method-num">01 · Tesis</div>
+      <div class="method-title">El criterio es el diferencial</div>
+      <p class="method-desc">Cualquier persona puede escribir "haceme un portfolio". Lo que diferencia el resultado es saber cuándo algo no funciona, por qué no funciona, y cómo describir lo que sí querés.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">02 · Tesis</div>
+      <div class="method-title">Velocidad con propósito</div>
+      <p class="method-desc">Lo que antes requería semanas de aprendizaje técnico se comprimió en una sesión. Pero la velocidad no es el logro — el logro es que esa velocidad estuvo al servicio de decisiones de diseño reales.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">03 · Tesis</div>
+      <div class="method-title">La iteración como método</div>
+      <p class="method-desc">49 versiones no son 49 intentos fallidos. Son 49 decisiones tomadas. Cada ZIP es un checkpoint de criterio aplicado.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">04 · Tesis</div>
+      <div class="method-title">Aprender haciendo</div>
+      <p class="method-desc">CSS, design tokens, optimización de imágenes, sliders interactivos. Ninguno fue aprendido antes de necesitarlo. Cada concepto apareció en el momento exacto en que hacía falta.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Cierre -->
+<div class="case-section-narrow reveal">
+  <div class="case-highlight">
+    <div class="case-highlight-label">Damián Lencina · 2026</div>
+    <p>"Este portfolio no existía. Ahora existe. Y el proceso de construirlo es, en sí mismo, <strong>la demostración más clara de cómo trabajo</strong>."</p>
+  </div>
+</div>
+
+<!-- Case nav -->
+<div class="case-nav">
+  <a href="caso_magoya.html" class="case-nav-item">
+    <div class="case-nav-direction">← Anterior · Caso 03</div>
+    <div class="case-nav-title">Magoya · Productora cinéfila</div>
+  </a>
+  <a href="index.html" class="case-nav-item case-nav-item--next">
+    <div class="case-nav-direction">Fin del recorrido →</div>
+    <div class="case-nav-title">Volver al portfolio</div>
+  </a>
+</div>
+
+<!-- Footer -->
+<section class="footer-cta">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-cta-tag">Trabajemos juntos</div>
+      <h2>¿Tenés un proyecto que <span class="grad">merece</span> esta misma mirada?</h2>
+      <p class="footer-cta-sub">Si llegaste hasta acá, ya viste lo que sé hacer. Hablemos de qué podemos construir juntos.</p>
+      <div class="contact-actions">
+        <a href="mailto:dami.lencina21@gmail.com" class="btn btn-light">
+          Escribime
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/damian-ezequiel-lencina/" target="_blank" rel="noopener" class="btn btn-dark-ghost">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="footer-fin">
+      <div class="footer-fin-text">End of file</div>
+      <div class="footer-fin-meta">© <span class="footer-year">2026</span> · DL · v2.0/Z</div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <div class="lightbox-img-wrap"><img loading="lazy" id="lightboxImg" src="" alt=""></div>
+</div>
+
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>

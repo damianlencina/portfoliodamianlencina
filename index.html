@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('dl-theme');
+    if(!t){ t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    if(t==='dark'){ document.documentElement.setAttribute('data-theme','dark'); }
+  }catch(e){}
+})();
+</script>
+<meta name="theme-color" content="#ffffff">
+
+<title>Damián Lencina — Diseño de aprendizaje y realización audiovisual</title>
+<meta name="description" content="Diseño experiencias formativas para empresas con la atención de un realizador audiovisual. Responsable de e-Learning en COTO CICSA. +7 años, 19.852 personas capacitadas.">
+<meta name="author" content="Damián Lencina">
+<meta name="keywords" content="diseño instruccional, e-learning corporativo, articulate storyline, moodle, producción audiovisual, capacitación, Buenos Aires, Argentina">
+
+<link rel="canonical" href="https://damianlencina.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Damián Lencina · Portfolio">
+<meta property="og:url" content="https://damianlencina.com/">
+<meta property="og:title" content="Damián Lencina — Diseño de aprendizaje y realización audiovisual">
+<meta property="og:description" content="Diseño experiencias formativas para empresas con la atención de un realizador audiovisual. +7 años en e-learning corporativo.">
+<meta property="og:image" content="https://damianlencina.com/img/og_image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Damián Lencina — Diseño de aprendizaje">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Damián Lencina — Diseño de aprendizaje">
+<meta name="twitter:description" content="Diseño experiencias formativas para empresas con mirada audiovisual.">
+<meta name="twitter:image" content="https://damianlencina.com/img/og_image.jpg">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Damián Lencina",
+  "jobTitle": "Responsable de e-Learning · Diseñador instruccional · Realizador audiovisual",
+  "url": "https://damianlencina.com/",
+  "image": "https://damianlencina.com/img/retrato.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/damian-ezequiel-lencina/",
+    "https://www.instagram.com/magoyacine"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "COTO CICSA"
+  },
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "Universidad Nacional de Moreno"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Buenos Aires",
+    "addressCountry": "AR"
+  },
+  "email": "dami.lencina21@gmail.com",
+  "knowsAbout": [
+    "Diseño instruccional",
+    "E-learning corporativo",
+    "Articulate Storyline",
+    "Moodle LMS",
+    "Producción audiovisual",
+    "Adobe Premiere Pro",
+    "After Effects"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="style.css">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#main" class="nav-mark">DL <span>·</span> v2.0/Z</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#trabajo">Trabajo</a></li>
+    <li><a href="metodo.html">Método</a></li>
+    <li><a href="notas.html">Notas</a></li>
+  </ul>
+  <div class="nav-end">
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema claro/oscuro" type="button">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- HERO -->
+<section id="main" class="hero">
+  <div class="hero-inner">
+
+    <!-- Status bar -->
+    <div class="hero-status">
+      <span class="hero-status-item">
+        <span class="hero-status-dot"></span>
+        Disponible para nuevos proyectos
+      </span>
+      <span class="hero-status-sep">/</span>
+      <span class="hero-status-item">Buenos Aires · AR</span>
+      <span class="hero-status-sep">/</span>
+      <span class="hero-status-item">v2.0/Z · 2026</span>
+    </div>
+
+    <!-- Grid 2 columnas: texto + video -->
+    <div class="hero-grid">
+
+      <div class="hero-content">
+        <h1>
+          <span class="line"><span>Aprender</span></span>
+          <span class="line"><span>también</span></span>
+          <span class="line"><span class="grad">se diseña.</span></span>
+        </h1>
+
+        <p class="hero-sub">
+          <strong>Damián Lencina</strong> diseña experiencias formativas para empresas con la atención que pondría un realizador audiovisual: el detalle, el ritmo, lo que se ve y lo que se sugiere.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#sobre" class="btn btn-primary">
+            Empezar el recorrido
+            <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Video card a la derecha -->
+      <aside class="hero-video">
+        <button class="hero-video-card" id="avatarPlayer" aria-label="Reproducir video de presentación">
+          <picture><source srcset="img/retrato_avatar.webp" type="image/webp"><img alt="Damián Lencina" loading="eager" fetchpriority="high" class="hero-video-img" src="img/retrato_avatar.jpg"></picture>
+          <span class="hero-video-overlay" aria-hidden="true"></span>
+          <span class="hero-video-play" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+          </span>
+          <span class="hero-video-meta">
+            <span class="hero-video-tag">▶ Presentación · 90 seg</span>
+            <span class="hero-video-name">Damián Lencina</span>
+          </span>
+        </button>
+      </aside>
+
+    </div>
+
+    <!-- Meta grid -->
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="label">Rol</div>
+        <div class="value">Responsable e-Learning</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Empresa</div>
+        <div class="value">COTO CICSA</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Experiencia</div>
+        <div class="value">+7 años</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Estado</div>
+        <div class="value signal">Activo</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video de presentación">
+  <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
+  <div class="video-modal-inner">
+    <button class="video-modal-close" id="videoModalClose" aria-label="Cerrar video">✕</button>
+    <div class="video-modal-frame">
+      <div id="ytPlayer"></div>
+    </div>
+    <p class="video-modal-caption" id="videoModalCaption">Video de presentación · Placeholder</p>
+  </div>
+</div>
+
+<!-- SOBRE (compacto · primero para anclar quién soy) -->
+<section class="about-section about-section--compact" id="sobre">
+  <div class="section-header reveal">
+    <div class="section-tag">01 · Quién soy</div>
+    <h2 class="section-h">Entre el aula y la <span class="grad">cámara</span>.</h2>
+  </div>
+
+  <div class="about-compact reveal">
+    <div class="about-portrait-sm">
+      <picture><source srcset="img/retrato.webp" type="image/webp"><img loading="lazy" alt="Damián Lencina" width="240" height="240" src="img/retrato.jpg"></picture>
+    </div>
+    <div class="about-compact-body">
+      <p>Soy <strong>Damián Lencina</strong>, comunicador y realizador audiovisual. Responsable de Formación e-Learning en <strong>COTO CICSA</strong>, donde lidero un equipo de 4 personas que armó el sistema desde casi cero. En paralelo mantengo <strong>Magoya Producciones</strong>, un proyecto cinéfilo desde 2016.</p>
+      <a href="sobre.html" class="link-arrow">Leer historia completa, formación y equipo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRABAJO -->
+<section id="trabajo">
+  <div class="section-header reveal">
+    <div class="section-tag">02 · Trabajo seleccionado</div>
+    <h2 class="section-h">Cuatro proyectos que cuentan cómo <span class="grad">trabajo</span>.</h2>
+    <p class="section-lead">Casos reales de e-learning corporativo y producción audiovisual, con foco en el proceso y los resultados medibles.</p>
+  </div>
+
+  <div class="work-wrap">
+
+    <!-- Featured case -->
+    <a href="caso_transformacion.html" class="featured-case reveal">
+      <div class="featured-case-header">
+        <span class="featured-case-num">01 / Featured</span>
+        <span class="featured-case-tag">COTO CICSA · 2019 → Hoy</span>
+      </div>
+      <div class="featured-case-body">
+        <div class="featured-case-content">
+          <h3>Siete años transformando el e-learning de una <span class="grad">compañía</span>.</h3>
+          <p>De junior a responsable del área. <strong>Cuando llegué a COTO no había sistema</strong>: cada curso era una pieza aparte, sin identidad visual, sin estrategia. Hoy hay una plataforma Moodle institucional, un método replicable y una arquitectura que alcanza a casi veinte mil colaboradores.</p>
+          <span class="featured-case-link">
+            Ver caso completo
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+        <div class="featured-case-stats">
+          <div class="stat-box">
+            <div class="stat-label">Años</div>
+            <div class="stat-value grad">+<span class="counter" data-target="7">7</span></div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Áreas integradas</div>
+            <div class="stat-value"><span class="counter" data-target="16">16</span>+</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Cursos producidos</div>
+            <div class="stat-value"><span class="counter" data-target="80">80</span>+</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Personas alcanzadas</div>
+            <div class="stat-value grad"><span class="counter" data-target="19852" data-format="thousand">19.852</span></div>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Grid 3 cards (carrusel horizontal en mobile) -->
+    <div class="work-grid work-grid--carousel reveal-stagger">
+
+      <a href="caso_coto.html" class="work-item">
+        <div class="work-thumb">
+          <picture><source srcset="img/mp_slide_01_portada.webp" type="image/webp"><img loading="lazy" alt="Curso Medios de Pago — portada" src="img/mp_slide_01_portada.jpg"></picture>
+        </div>
+        <div class="work-body">
+          <div class="work-byline">Caso 02 · COTO · Medios de Pago</div>
+          <h3 class="work-title">¿Cómo hacemos un curso <span class="grad">desde cero</span>?</h3>
+          <p class="work-desc">El método de cuatro etapas en un caso completo: diseño instruccional, sistema visual, video filmado en planta y evaluación final.</p>
+          <span class="work-link">
+            Ver caso
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="caso_magoya.html" class="work-item">
+        <div class="work-thumb work-thumb--magoya">
+          <div class="magoya-thumb-inner">
+            <div class="magoya-thumb-grain"></div>
+            <div class="magoya-thumb-bars">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="magoya-thumb-content">
+              <div class="magoya-thumb-tag">▸ Caso 03 · 2016 → Hoy</div>
+              <div class="magoya-thumb-logo">
+                <span class="magoya-logo-mark">▸</span>magoya<span class="magoya-logo-accent">cine</span>
+              </div>
+              <div class="magoya-thumb-sub">Multimedio editorial cinéfilo</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-byline">Caso 03 · Magoya · 2016 → Hoy</div>
+          <h3 class="work-title">Productora <span class="grad">cinéfila</span></h3>
+          <p class="work-desc">Sitio editorial, canal de YouTube e Instagram. Críticas, festivales y producción audiovisual propia.</p>
+          <span class="work-link">
+            Ver caso
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="caso_ia.html" class="work-item work-item--ia">
+        <div class="work-thumb">
+          <div class="ia-thumb-grid"></div>
+          <div class="ia-thumb-inner">
+            <div class="ia-thumb-tag">Caso 04 · v52/Z</div>
+            <div class="ia-thumb-title">Este portfolio<br>es el caso<span class="ia-cursor">_</span></div>
+            <div class="ia-thumb-sub">$ claude --build portfolio</div>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-byline">Caso 04 · Claude AI + DL · 2026</div>
+          <h3 class="work-title">Aprender a crear con <span class="grad">IA</span>.</h3>
+          <p class="work-desc">El antes era un mensaje de texto. El después es este portfolio. El proceso de construirlo es la demostración.</p>
+          <span class="work-link">
+            Ver caso
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="work-carousel-hint" aria-hidden="true">← Deslizá para ver los casos →</div>
+
+  </div>
+</section>
+
+<!-- MÉTODO (compacto · teaser) -->
+<section class="method-section method-section--compact" id="metodo">
+  <div class="section-header reveal">
+    <div class="section-tag">03 · El método</div>
+    <h2 class="section-h">Cuatro etapas, una <span class="grad">mirada</span>.</h2>
+    <p class="section-lead">La doble mirada — la del que enseña y la del que cuenta — se traduce en cuatro etapas claras de trabajo.</p>
+  </div>
+
+  <div class="method-flow reveal-stagger">
+    <div class="method-step">
+      <span class="method-step-num">01</span>
+      <span class="method-step-label">Diagnóstico</span>
+    </div>
+    <span class="method-flow-arrow" aria-hidden="true">→</span>
+    <div class="method-step">
+      <span class="method-step-num">02</span>
+      <span class="method-step-label">Diseño</span>
+    </div>
+    <span class="method-flow-arrow" aria-hidden="true">→</span>
+    <div class="method-step">
+      <span class="method-step-num">03</span>
+      <span class="method-step-label">Producción</span>
+    </div>
+    <span class="method-flow-arrow" aria-hidden="true">→</span>
+    <div class="method-step">
+      <span class="method-step-num">04</span>
+      <span class="method-step-label">Implementación</span>
+    </div>
+  </div>
+
+  <div class="method-link reveal">
+    <a href="metodo.html" class="link-arrow">Ver método completo, con detalle por etapa →</a>
+  </div>
+</section>
+
+<!-- NOTAS (preview) -->
+<section class="notas-preview-section" id="notas-preview">
+  <div class="section-header reveal">
+    <div class="section-tag">04 · Notas</div>
+    <h2 class="section-h">Cosas que voy <span class="grad">aprendiendo</span> en el camino.</h2>
+    <p class="section-lead">Apuntes breves sobre diseño instruccional, e-learning y la mirada audiovisual aplicada a la formación.</p>
+  </div>
+
+  <div class="notas-preview-grid reveal-stagger">
+    <a href="nota_video.html" class="notas-preview-card">
+      <div class="notas-preview-meta">
+        <span class="notas-preview-tag">E-Learning</span>
+        <span class="notas-preview-date">Mayo 2026 · 4 min</span>
+      </div>
+      <h3 class="notas-preview-title">Por qué el video corporativo suele ser un <span class="grad">desastre</span>.</h3>
+      <span class="notas-preview-link">Leer nota →</span>
+    </a>
+    <a href="nota_evaluacion.html" class="notas-preview-card">
+      <div class="notas-preview-meta">
+        <span class="notas-preview-tag">Diseño instruccional</span>
+        <span class="notas-preview-date">Mayo 2026 · 5 min</span>
+      </div>
+      <h3 class="notas-preview-title">Cómo diseñar una evaluación que no sea un <span class="grad">trámite</span>.</h3>
+      <span class="notas-preview-link">Leer nota →</span>
+    </a>
+    <a href="nota_cine.html" class="notas-preview-card">
+      <div class="notas-preview-meta">
+        <span class="notas-preview-tag">Diseño</span>
+        <span class="notas-preview-date">Abril 2026 · 3 min</span>
+      </div>
+      <h3 class="notas-preview-title">Lo que el cine me enseñó sobre el <span class="grad">e-learning</span>.</h3>
+      <span class="notas-preview-link">Leer nota →</span>
+    </a>
+  </div>
+
+  <div class="notas-preview-link-wrap reveal">
+    <a href="notas.html" class="link-arrow">Ver todas las notas →</a>
+  </div>
+</section>
+
+
+<!-- CIERRE · derivación a Foco Estudio + canales personales -->
+<section class="footer-cta" id="contacto">
+  <div class="footer-inner">
+    <div class="reveal">
+      <div class="footer-cta-tag">¿Querés trabajar conmigo?</div>
+      <h2>La parte comercial vive en <span class="grad">Foco Estudio</span>.</h2>
+      <p class="footer-cta-sub">Foco Estudio es mi estudio de diseño de aprendizaje. Ahí están los servicios, los precios y la propuesta interactiva para arrancar un proyecto.</p>
+
+      <div class="foco-cta-wrap">
+        <a href="https://damianlencina.github.io/testfocoestudio/" target="_blank" rel="noopener" class="foco-cta">
+          <span class="foco-cta-mark">FE</span>
+          <span class="foco-cta-body">
+            <span class="foco-cta-label">Ir a Foco Estudio</span>
+            <span class="foco-cta-sub">Servicios · precios · propuesta interactiva ↗</span>
+          </span>
+          <span class="foco-cta-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="personal-channels">
+        <span class="personal-channels-label">O contactame directo:</span>
+        <a href="mailto:dami.lencina21@gmail.com" class="personal-channel">Email</a>
+        <span class="personal-channels-sep">·</span>
+        <a href="https://www.linkedin.com/in/damian-ezequiel-lencina/" target="_blank" rel="noopener" class="personal-channel">LinkedIn</a>
+        <span class="personal-channels-sep">·</span>
+        <a href="https://www.instagram.com/magoyacine" target="_blank" rel="noopener" class="personal-channel">Instagram</a>
+      </div>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-label">Damián Lencina</div>
+        <div class="footer-col-brand">Diseño de aprendizaje y realización audiovisual.</div>
+        <div class="footer-col-sub">Buenos Aires, Argentina<br>+7 años en e-learning corporativo</div>
+        <div class="footer-col-sub" style="margin-top:14px;">
+          Estudio: <a href="https://damianlencina.github.io/testfocoestudio/" target="_blank" rel="noopener" style="color:var(--ink);font-weight:500;text-decoration:underline;text-underline-offset:3px;">Foco Estudio ↗</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Portfolio</div>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#trabajo">Trabajo</a></li>
+          <li><a href="metodo.html">Método</a></li>
+          <li><a href="notas.html">Notas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Casos</div>
+        <ul>
+          <li><a href="caso_transformacion.html">01 · COTO Transformación</a></li>
+          <li><a href="caso_coto.html">02 · Medios de Pago</a></li>
+          <li><a href="caso_magoya.html">03 · Magoya</a></li>
+          <li><a href="caso_ia.html">04 · IA + Portfolio</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Encontrame</div>
+        <ul>
+          <li><a href="mailto:dami.lencina21@gmail.com">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/damian-ezequiel-lencina/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://www.instagram.com/magoyacine" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="Damian_Lencina_Resumen.pdf" download>Resumen (PDF)</a></li>
+          <li><a href="https://damianlencina.github.io/testfocoestudio/" target="_blank" rel="noopener">Foco Estudio ↗</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-fin">
+      <div class="footer-fin-text">End of file</div>
+      <div class="footer-fin-meta">© <span class="footer-year">2026</span> · DL · v2.0/Z · Hecho a mano en Buenos Aires</div>
+    </div>
+  </div>
+</section>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <div class="lightbox-img-wrap"><img loading="lazy" id="lightboxImg" src="" alt=""></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
