@@ -13,8 +13,8 @@
 })();
 </script>
   <meta name="theme-color" content="#ffffff">
-<title>Caso 04 — Aprender a crear con IA · Damián Lencina</title>
-<meta name="description" content="Cómo se construyó este portfolio en conversación con IA. El meta-caso: criterio editorial humano + ejecución técnica con Claude.">
+<title>Foco Estudio · E-learning corporativo · Damián Lencina</title>
+<meta name="description" content="Foco Estudio: diseño instruccional y producción de e-learning corporativo. +80 cursos, +7 años de oficio, diseño 100% a medida.">
 <meta name="author" content="Damián Lencina">
 
 <link rel="canonical" href="https://damianlencina.com/caso_ia.html">
@@ -24,17 +24,16 @@
 <meta property="og:locale" content="es_AR">
 <meta property="og:site_name" content="Damián Lencina · Portfolio">
 <meta property="og:url" content="https://damianlencina.com/caso_ia.html">
-<meta property="og:title" content="Caso 04 — Aprender a crear con IA · Damián Lencina">
-<meta property="og:description" content="Cómo se construyó este portfolio en conversación con IA. El meta-caso: criterio editorial humano + ejecución técnica con Claude.">
+<meta property="og:title" content="Foco Estudio · E-learning corporativo · Damián Lencina">
+<meta property="og:description" content="Foco Estudio: diseño instruccional y producción de e-learning corporativo. +80 cursos, +7 años de oficio, diseño 100% a medida.">
 <meta property="og:image" content="https://damianlencina.com/img/og_image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Caso 04 — Portfolio con IA">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Caso 04 — Aprender a crear con IA · Damián Lencina">
-<meta name="twitter:description" content="Cómo se construyó este portfolio en conversación con IA. El meta-caso: criterio editorial humano + ejecución técnica con Claude.">
+<meta name="twitter:title" content="Foco Estudio · E-learning corporativo · Damián Lencina">
+<meta name="twitter:description" content="Foco Estudio: diseño instruccional y producción de e-learning corporativo. +80 cursos, +7 años de oficio, diseño 100% a medida.">
 <meta name="twitter:image" content="https://damianlencina.com/img/og_image.jpg">
 
 <!-- Favicons -->
@@ -46,15 +45,14 @@
 {
   "@context": "https://schema.org",
   "@type": "CreativeWork",
-  "name": "Portfolio diseñado con IA",
-  "description": "Cómo se construyó este portfolio en conversación con IA. El meta-caso: criterio editorial humano + ejecución técnica con Claude.",
+  "name": "Foco Estudio · E-learning corporativo",
+  "description": "Estudio de diseño instruccional y producción de e-learning corporativo. +80 cursos, +7 años de oficio.",
   "url": "https://damianlencina.com/caso_ia.html",
   "author": {
     "@type": "Person",
     "name": "Damián Lencina",
     "url": "https://damianlencina.com/"
-  },
-  "image": "https://damianlencina.com/img/og_image.jpg"
+  }
 }
 </script>
 
@@ -64,195 +62,287 @@
   <link rel="preload" as="style" href="style.css">
 <link rel="stylesheet" href="style.css">
   <style>
-    /* Chat log estilo conversación IA */
-    .chat-log {
-      max-width: 720px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      padding: 32px;
-      background: var(--bg-tint);
-      border-radius: var(--radius-l);
-      border: 1px solid var(--ink-line-soft);
-    }
-    .chat-msg {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-    }
-    .chat-avatar {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--type-mono);
-      font-size: 12px;
-      font-weight: 600;
-      flex-shrink: 0;
-      background: var(--bg);
-      color: var(--ink);
-      border: 1px solid var(--ink-line);
-    }
-    .chat-msg.claude .chat-avatar {
-      background: var(--aurora-grad);
-      color: var(--bg);
-      border-color: transparent;
-    }
-    .chat-bubble {
-      background: var(--bg);
-      border: 1px solid var(--ink-line-soft);
-      border-radius: var(--radius-m);
-      padding: 12px 16px;
-      font-size: var(--t-body);
-      line-height: 1.5;
-      color: var(--ink-soft);
-      max-width: 100%;
-    }
-    .chat-msg.claude .chat-bubble {
-      background: var(--bg-dark);
-      color: var(--ink-invert);
-      border-color: transparent;
-    }
-    .chat-time {
-      font-family: var(--type-mono);
-      font-size: var(--t-micro);
-      color: var(--ink-dim);
-      margin-top: 6px;
-      padding-left: 4px;
-    }
-
-    /* Versions strip — pills futuristas */
-    .versions-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 24px;
-    }
-    .version-pill {
-      font-family: var(--type-mono);
-      font-size: var(--t-tag);
-      padding: 6px 12px;
-      border-radius: var(--radius-s);
-      background: var(--bg-tint);
-      color: var(--ink-mid);
-      border: 1px solid var(--ink-line-soft);
-    }
-    .version-pill.range {
-      background: var(--bg-dark);
-      color: var(--bg);
-      border-color: transparent;
-    }
-    .version-pill.aurora {
-      background: var(--aurora-grad);
-      color: var(--bg);
-      border-color: transparent;
-      font-weight: 500;
-    }
-
-    /* Process stats */
-    .process-stats-grid {
+    /* Servicios grid */
+    .servicios-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1px;
       background: var(--ink-line-soft);
       border-radius: var(--radius-l);
       overflow: hidden;
       border: 1px solid var(--ink-line-soft);
-      margin: 48px 0;
     }
-    .pstat-cell {
+    .servicio-cell {
       background: var(--bg);
-      padding: 24px 20px;
+      padding: 32px 28px;
     }
-    .pstat-cell .pstat-value {
-      font-size: clamp(28px, 3vw, 40px);
+    .servicio-cell:nth-child(even) {
+      background: var(--bg-tint);
+    }
+    .servicio-icon {
+      width: 40px; height: 40px;
+      border-radius: var(--radius-m);
+      background: var(--aurora-grad-soft);
+      border: 1px solid rgba(99,102,241,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: var(--aurora-1);
+    }
+    .servicio-title {
+      font-size: var(--t-lead);
       font-weight: 600;
-      letter-spacing: -0.03em;
       color: var(--ink);
-      line-height: 1;
-      font-variant-numeric: tabular-nums;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
-    .pstat-cell .pstat-value.grad {
-      background: var(--aurora-grad-text);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .pstat-cell .pstat-label {
-      font-family: var(--type-mono);
-      font-size: var(--t-tag);
-      color: var(--ink-dim);
-      margin-top: 8px;
+    .servicio-desc {
+      font-size: var(--t-body);
+      color: var(--ink-mid);
+      line-height: 1.6;
     }
 
-    /* Antes / después comparativa */
-    .compare-cols {
+    /* Gamificación showcase */
+    .gamif-showcase {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin: 48px 0;
+      gap: 40px;
+      align-items: center;
     }
-    .compare-col {
-      background: var(--bg);
-      border: 1px solid var(--ink-line-soft);
-      border-radius: var(--radius-l);
-      padding: 32px;
-    }
-    .compare-col.after {
+    .gamif-visual {
       background: var(--bg-dark);
-      color: var(--ink-invert);
-      border-color: transparent;
-      position: relative;
+      border-radius: var(--radius-l);
       overflow: hidden;
+      position: relative;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 32px;
     }
-    .compare-col.after::before {
+    .gamif-visual::before {
       content: '';
       position: absolute;
-      top: -50%; right: -30%;
-      width: 80%; height: 100%;
-      background: radial-gradient(ellipse, rgba(139,92,246,0.3) 0%, transparent 70%);
+      top: -40%; left: -20%;
+      width: 80%; height: 80%;
+      background: radial-gradient(ellipse, rgba(99,102,241,0.35) 0%, transparent 70%);
       filter: blur(40px);
       pointer-events: none;
     }
-    .compare-col.after > * { position: relative; z-index: 1; }
-    .compare-col-label {
-      display: inline-block;
-      font-family: var(--type-mono);
-      font-size: var(--t-tag);
-      padding: 4px 10px;
-      border-radius: var(--radius-s);
-      background: var(--bg-tint);
-      color: var(--ink-mid);
-      margin-bottom: 20px;
-    }
-    .compare-col.after .compare-col-label {
-      background: var(--aurora-grad);
-      color: var(--bg);
-    }
-    .compare-col ul li {
-      font-size: var(--t-body);
-      line-height: 1.6;
-      color: var(--ink-mid);
-      padding-left: 20px;
-      position: relative;
-      margin-bottom: 10px;
-    }
-    .compare-col.after ul li { color: rgba(255,255,255,0.75); }
-    .compare-col ul li::before {
+    .gamif-visual::after {
       content: '';
       position: absolute;
-      left: 0; top: 10px;
-      width: 8px; height: 1px;
-      background: var(--ink-dim);
+      bottom: -30%; right: -10%;
+      width: 60%; height: 70%;
+      background: radial-gradient(ellipse, rgba(236,72,153,0.25) 0%, transparent 70%);
+      filter: blur(40px);
+      pointer-events: none;
     }
-    .compare-col.after ul li::before { background: rgba(255,255,255,0.4); }
+    .gamif-visual-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .gamif-chars {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      align-items: flex-end;
+      margin-bottom: 24px;
+    }
+    .gamif-char {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .gamif-char img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255,255,255,0.14);
+      box-shadow: 0 8px 28px rgba(99,102,241,0.45);
+    }
+    .gamif-char-name {
+      font-family: var(--type-mono);
+      font-size: var(--t-tag);
+      color: rgba(255,255,255,0.7);
+    }
+    .gamif-title {
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 600;
+      color: #f5f5f7;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+    .gamif-sub {
+      font-size: var(--t-small);
+      color: rgba(255,255,255,0.5);
+      font-family: var(--type-mono);
+    }
+    .gamif-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-full);
+      padding: 6px 14px;
+      font-size: var(--t-tag);
+      color: rgba(255,255,255,0.75);
+    }
 
-    @media (max-width: 720px) {
-      .compare-cols { grid-template-columns: 1fr; }
-      .process-stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .gamif-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .gamif-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 4px 0;
+    }
+    .gamif-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: var(--t-body);
+      color: var(--ink-mid);
+      line-height: 1.5;
+    }
+    .gamif-feature-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--aurora-grad);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+    .gamif-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: var(--radius-m);
+      background: var(--bg-dark);
+      color: var(--ink-invert);
+      font-size: var(--t-body);
+      font-weight: 500;
+      transition: opacity 0.2s;
+      align-self: flex-start;
+    }
+    .gamif-cta:hover { opacity: 0.8; }
+
+    /* Proceso steps */
+    .proceso-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin: 48px 0;
+    }
+    .proceso-step {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .proceso-step-num {
+      font-family: var(--type-mono);
+      font-size: var(--t-tag);
+      color: var(--ink-dim);
+    }
+    .proceso-step-bar {
+      height: 3px;
+      border-radius: 2px;
+      background: var(--ink-line);
+      overflow: hidden;
+    }
+    .proceso-step-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: var(--aurora-grad);
+    }
+    .proceso-step-title {
+      font-size: var(--t-body);
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .proceso-step-desc {
+      font-size: var(--t-small);
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+
+    /* Foco CTA block */
+    .foco-link-block {
+      background: var(--bg-dark);
+      border-radius: var(--radius-l);
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .foco-link-block::before {
+      content: '';
+      position: absolute;
+      top: -40%; right: -10%;
+      width: 50%; height: 100%;
+      background: radial-gradient(ellipse, rgba(99,102,241,0.3) 0%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+    .foco-link-block > * { position: relative; z-index: 1; }
+    .foco-link-label {
+      font-family: var(--type-mono);
+      font-size: var(--t-tag);
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 8px;
+    }
+    .foco-link-title {
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: 600;
+      color: #f5f5f7;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .foco-link-sub {
+      font-size: var(--t-body);
+      color: rgba(255,255,255,0.55);
+      max-width: 460px;
+    }
+    .foco-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 26px;
+      border-radius: var(--radius-m);
+      background: var(--aurora-grad);
+      color: #fff;
+      font-size: var(--t-body);
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .foco-link-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    @media (max-width: 900px) {
+      .gamif-showcase { grid-template-columns: 1fr; }
+      .servicios-grid { grid-template-columns: 1fr; }
+      .proceso-steps { grid-template-columns: repeat(2, 1fr); }
+      .foco-link-block {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 32px;
+      }
+    }
+    @media (max-width: 520px) {
+      .proceso-steps { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -262,7 +352,7 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="index.html" class="nav-mark">DL <span>·</span> Caso 04/04</a>
+  <a href="index.html" class="nav-mark">DL <span>·</span> Caso 01/04</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html#sobre">Sobre</a></li>
     <li><a href="index.html#trabajo">Trabajo</a></li>
@@ -289,32 +379,32 @@
     Volver al portfolio
   </a>
 
-  <div class="case-tag">Caso 04 · Claude AI + DL · 2026 · Proceso propio</div>
+  <div class="case-tag">Foco Estudio · E-learning corporativo · Buenos Aires</div>
 
   <h1 class="case-title">
-    El antes era un mensaje. El después es <span class="grad">esto</span>.
+    E-learning que la gente <span class="grad">termina</span>.
   </h1>
 
   <p class="case-lead">
-    Este no es un caso de cliente. Es el meta-caso: cómo se construyó este portfolio — cada página, cada slider, cada token de espaciado — <strong>desde cero, en conversación con IA</strong>. El caso demuestra dos cosas al mismo tiempo: que sé construir experiencias complejas, y que sé usar las herramientas del presente para hacerlo mejor.
+    Foco Estudio es mi estudio de diseño instruccional. Producimos cursos corporativos que funcionan — no porque sean lindos, sino porque están bien pensados: estructura clara, narrativa que engancha y mecánicas que sostienen la atención del principio al final.
   </p>
 
   <div class="case-meta">
     <div class="case-meta-item">
-      <div class="label">Herramienta</div>
-      <div class="value">Claude AI</div>
+      <div class="label">Estudio</div>
+      <div class="value">Foco Estudio</div>
     </div>
     <div class="case-meta-item">
-      <div class="label">Período</div>
-      <div class="value">Enero 2026 — Hoy</div>
+      <div class="label">Disciplina</div>
+      <div class="value">Diseño instruccional</div>
     </div>
     <div class="case-meta-item">
-      <div class="label">Versión Z</div>
-      <div class="value">v52 / Z</div>
+      <div class="label">Herramientas</div>
+      <div class="value">Storyline · Rise</div>
     </div>
     <div class="case-meta-item">
-      <div class="label">Output</div>
-      <div class="value">Portfolio completo</div>
+      <div class="label">Entrega</div>
+      <div class="value">SCORM 1.2 / 2004</div>
     </div>
   </div>
 </section>
@@ -323,343 +413,117 @@
 <div class="case-section">
   <div class="case-stats-row reveal">
     <div class="case-stat">
-      <div class="label">Versiones</div>
-      <div class="value grad"><span class="counter" data-target="49">49</span>+</div>
+      <div class="label">Cursos producidos</div>
+      <div class="value grad"><span class="counter" data-target="80">80</span>+</div>
     </div>
     <div class="case-stat">
-      <div class="label">Páginas construidas</div>
-      <div class="value"><span class="counter" data-target="6">6</span></div>
+      <div class="label">Diseño</div>
+      <div class="value">A medida</div>
     </div>
     <div class="case-stat">
-      <div class="label">Peso optimizado</div>
-      <div class="value">−68%</div>
+      <div class="label">Años de experiencia</div>
+      <div class="value">+7</div>
     </div>
     <div class="case-stat">
-      <div class="label">Estilos inline</div>
-      <div class="value"><span class="counter" data-target="0">0</span></div>
+      <div class="label">Estándar técnico</div>
+      <div class="value">SCORM 1.2</div>
     </div>
   </div>
 </div>
 
-<!-- El antes -->
+<!-- Qué es Foco -->
 <div class="case-section-narrow reveal">
-  <div class="case-section-tag">El antes</div>
-  <h2>No había portfolio. Había una <span class="grad">idea</span>.</h2>
-  <p>El punto de partida no fue un diseño desactualizado ni un código que arreglar. Fue un mensaje. <strong>Sin archivos adjuntos, sin wireframes, sin brief.</strong> Solo la intención de construir algo que contara bien quién es Damián Lencina como profesional.</p>
+  <div class="case-section-tag">El estudio</div>
+  <h2>Un estudio chico con <span class="grad">criterio propio</span>.</h2>
+  <p>Foco Estudio nació de algo simple: demasiados cursos corporativos son malos. No porque las empresas no quieran hacerlos bien — sino porque nadie les preguntó qué problema querían resolver antes de empezar a diseñar slides.</p>
+  <p style="margin-top: 16px;">En Foco trabajamos diferente. Antes de abrir Storyline, entendemos al usuario, la tarea y el contexto. Diseñamos experiencias de aprendizaje con narrativa, ritmo y estructura — y las empaquetamos en SCORM listo para cualquier LMS.</p>
 </div>
 
-<!-- Chat log: el comienzo -->
+<!-- Servicios -->
 <div class="case-section reveal">
-  <div class="chat-log">
-    <div class="chat-msg">
-      <div class="chat-avatar">DL</div>
-      <div>
-        <div class="chat-bubble">quiero hacer un portfolio</div>
-        <div class="chat-time">El comienzo · v01 · 2026</div>
-      </div>
+  <div class="servicios-grid">
+    <div class="servicio-cell">
+      <div class="servicio-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+      <div class="servicio-title">Diseño instruccional</div>
+      <p class="servicio-desc">Análisis de necesidades, objetivos de aprendizaje, guionado y estructura pedagógica. El cerebro detrás del curso.</p>
     </div>
-    <div class="chat-msg claude">
-      <div class="chat-avatar">C</div>
-      <div>
-        <div class="chat-bubble">Perfecto. Antes de arrancar necesito entender qué querés mostrar y a quién va dirigido. ¿Cuál es tu perfil profesional?</div>
-      </div>
+    <div class="servicio-cell">
+      <div class="servicio-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M10 8l3 2.5L10 13"/></svg></div>
+      <div class="servicio-title">Producción en Storyline / Rise</div>
+      <p class="servicio-desc">Desarrollo completo de módulos interactivos. Sliders, evaluaciones, branching, animaciones. Entrega en SCORM 1.2 o 2004.</p>
     </div>
-    <div class="chat-msg">
-      <div class="chat-avatar">DL</div>
-      <div>
-        <div class="chat-bubble">soy diseñador de e-learning corporativo y realizador audiovisual. trabajo en COTO hace 7 años. quiero mostrar mis casos de trabajo</div>
-      </div>
+    <div class="servicio-cell">
+      <div class="servicio-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 2.6 5.5 6 .9-4.3 4.2 1 6L12 16l-5.3 2.6 1-6L3.4 8.4l6-.9Z"/></svg></div>
+      <div class="servicio-title">Gamificación aplicada</div>
+      <p class="servicio-desc">Mecánicas de juego integradas al aprendizaje: puntos, niveles, personajes, narrativa. No decorativa — funcional.</p>
     </div>
-    <div class="chat-msg claude">
-      <div class="chat-avatar">C</div>
-      <div>
-        <div class="chat-bubble">Tenemos mucho material para trabajar. Propongo empezar por la estructura: cuántos casos, qué jerarquía, qué historia querés que cuente el portfolio como unidad. ¿Arrancamos?</div>
-      </div>
-    </div>
-    <div class="chat-msg">
-      <div class="chat-avatar">DL</div>
-      <div>
-        <div class="chat-bubble">dale</div>
-        <div class="chat-time">Y así empezó todo.</div>
-      </div>
+    <div class="servicio-cell">
+      <div class="servicio-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg></div>
+      <div class="servicio-title">Consultoría y acompañamiento</div>
+      <p class="servicio-desc">Revisión de cursos existentes, definición de estructura pedagógica, selección de herramientas y soporte a equipos internos.</p>
     </div>
   </div>
 </div>
 
-<!-- Antes/después comparativa -->
-<div class="case-section reveal">
-  <div class="compare-cols">
-    <div class="compare-col">
-      <div class="compare-col-label">El antes</div>
-      <ul>
-        <li>Un mensaje de texto en un chat</li>
-        <li>Sin archivos, sin diseño, sin código</li>
-        <li>Sin estructura definida</li>
-        <li>Sin imágenes de trabajo</li>
-        <li>Sin sistema visual</li>
-      </ul>
-    </div>
-    <div class="compare-col after">
-      <div class="compare-col-label">El después</div>
-      <ul>
-        <li>6 páginas HTML/CSS/JS completas</li>
-        <li>5 casos documentados con narrativa</li>
-        <li>Sistema de design tokens en :root</li>
-        <li>42 imágenes optimizadas (3.8MB total)</li>
-        <li>Sliders interactivos vanilla JS</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<!-- El método -->
+<!-- Gamificación showcase -->
 <div class="case-section-narrow reveal">
-  <div class="case-section-tag">El método</div>
-  <h2>Conversación como <span class="grad">herramienta de diseño</span>.</h2>
-  <p>No fue "pedirle cosas a una IA". Fue un proceso iterativo donde cada intercambio tenía roles claros: <strong>visión editorial y criterio estético de un lado, ejecución técnica y estructura del otro</strong>. La calidad del resultado dependió directamente de la calidad de las preguntas.</p>
-  <p>49 versiones en una conversación continua. Cada bloque con un propósito:</p>
-  <div class="versions-strip">
-    <span class="version-pill aurora">v01–v05</span>
-    <span class="version-pill">Estructura base</span>
-    <span class="version-pill aurora">v06–v12</span>
-    <span class="version-pill">Casos y contenido</span>
-    <span class="version-pill range">v13–v20</span>
-    <span class="version-pill">Imágenes reales</span>
-    <span class="version-pill range">v21–v27</span>
-    <span class="version-pill">Interactividad</span>
-    <span class="version-pill aurora">v28–v33</span>
-    <span class="version-pill">Sistema visual</span>
-    <span class="version-pill range">v34–v40</span>
-    <span class="version-pill">Optimización y tokens</span>
-    <span class="version-pill aurora">v41–v49</span>
-    <span class="version-pill">Videos, refinamiento y publicación</span>
-  </div>
-</div>
-
-<!-- Insights del método -->
-<div class="case-section reveal">
-  <div class="method-grid reveal-stagger">
-    <div class="method-item">
-      <div class="method-num">01 · Aprendizaje</div>
-      <div class="method-title">El feedback preciso acelera</div>
-      <p class="method-desc">"quedó feo" no es feedback útil. "el degradé arranca antes de tiempo y el hero queda atrapado debajo de una franja oscura" sí lo es. A medida que avanzábamos, las iteraciones se volvían más quirúrgicas.</p>
-    </div>
-    <div class="method-item">
-      <div class="method-num">02 · Aprendizaje</div>
-      <div class="method-title">Romper para aprender</div>
-      <p class="method-desc">La v33 rompió el diseño. El CSS con max-width directo en las secciones limitó también los fondos. Ese error enseñó más sobre el modelo de caja que diez tutoriales.</p>
-    </div>
-    <div class="method-item">
-      <div class="method-num">03 · Aprendizaje</div>
-      <div class="method-title">El idioma importa</div>
-      <p class="method-desc">"hacelo más chico" puede significar diez cosas. "limitá el ancho del slider a 720px y centralo con margin auto" es una instrucción ejecutable.</p>
-    </div>
-    <div class="method-item">
-      <div class="method-num">04 · Aprendizaje</div>
-      <div class="method-title">El sistema supera la suma</div>
-      <p class="method-desc">Corregir un espaciado una vez no es suficiente si en otra sección hay otro valor hardcodeado. La v36 introdujo design tokens en :root. Desde ahí, un cambio global cuesta una línea.</p>
-    </div>
-  </div>
-</div>
-
-<!-- Lo que construimos / números -->
-<div class="case-section-narrow reveal">
-  <div class="case-section-tag">Lo que construimos</div>
-  <h2>Números de un proceso <span class="grad">real</span>.</h2>
-  <p>Cada número acá tiene historia. No son métricas de vanidad — son evidencia de decisiones tomadas, problemas resueltos y criterio aplicado.</p>
+  <div class="case-section-tag">Producción reciente</div>
+  <h2>Gamificación en e-learning: <span class="grad">el curso</span>.</h2>
+  <p>Un curso SCORM sobre gamificación aplicada al e-learning corporativo. Diseñado, guionado y producido en Foco. Sofía y Pedro guían el recorrido durante 10 días con una estructura progresiva, bienvenida personalizada y mecánicas de avance.</p>
 </div>
 
 <div class="case-section reveal">
-  <div class="process-stats-grid">
-    <div class="pstat-cell">
-      <div class="pstat-value grad">49</div>
-      <div class="pstat-label">Versiones ZIP</div>
-    </div>
-    <div class="pstat-cell">
-      <div class="pstat-value">6</div>
-      <div class="pstat-label">Páginas HTML</div>
-    </div>
-    <div class="pstat-cell">
-      <div class="pstat-value">42</div>
-      <div class="pstat-label">Imágenes activas</div>
-    </div>
-    <div class="pstat-cell">
-      <div class="pstat-value grad">−68%</div>
-      <div class="pstat-label">Peso (12→3.8MB)</div>
-    </div>
-    <div class="pstat-cell">
-      <div class="pstat-value">2</div>
-      <div class="pstat-label">Sliders interactivos</div>
-    </div>
-    <div class="pstat-cell">
-      <div class="pstat-value">0</div>
-      <div class="pstat-label">Estilos inline</div>
-    </div>
-    <div class="pstat-cell">
-      <div class="pstat-value">27</div>
-      <div class="pstat-label">CSS tokens en :root</div>
-    </div>
-    <div class="pstat-cell">
-      <div class="pstat-value">33</div>
-      <div class="pstat-label">Imgs huérfanas borradas</div>
-    </div>
-  </div>
-</div>
-
-<!-- Intercambios clave -->
-<div class="case-section-narrow reveal">
-  <h3>Los intercambios que <span class="grad">definieron</span> el proceso.</h3>
-</div>
-
-<div class="case-section reveal">
-  <div class="chat-log">
-    <div class="chat-msg">
-      <div class="chat-avatar">DL</div>
-      <div>
-        <div class="chat-bubble">quedó feo che, antes el placeholder estaba mejor. además me gustaría cambiar ese título</div>
-        <div class="chat-time">Iteración 13 · redesign del thumb principal</div>
-      </div>
-    </div>
-    <div class="chat-msg claude">
-      <div class="chat-avatar">C</div>
-      <div>
-        <div class="chat-bubble">Tenés razón en las dos. Vamos por partes: el thumb se ve gigante porque la imagen viene en relación de aspecto muy ancha y rompe la grilla. Solución: limitar el alto y usar object-fit: cover.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="case-section reveal">
-  <div class="chat-log">
-    <div class="chat-msg">
-      <div class="chat-avatar">DL</div>
-      <div>
-        <div class="chat-bubble">creo que se rompió un poco el diseño no? jajaja</div>
-        <div class="chat-time">Iteración 21 · el CSS que se rompió</div>
-      </div>
-    </div>
-    <div class="chat-msg claude">
-      <div class="chat-avatar">C</div>
-      <div>
-        <div class="chat-bubble">El bug raíz: cuando agregué max-width directo a .case-section y .case-hero, esos section también tienen las clases bg-light/bg-dark que pintan el fondo. El max-width limitó el fondo coloreado también, dejando islas y desbordes raros.</div>
-      </div>
-    </div>
-    <div class="chat-msg">
-      <div class="chat-avatar">DL</div>
-      <div>
-        <div class="chat-bubble">ah oki oki</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="case-section reveal">
-  <div class="chat-log">
-    <div class="chat-msg">
-      <div class="chat-avatar">DL</div>
-      <div>
-        <div class="chat-bubble">quiero que alinees todo el portfolio, que cada cosa esté en su respectivo tamaño para que todo tenga un orden visual con alineaciones con sentido. quiero uniformidad, prolijidad de diseñador en todo</div>
-        <div class="chat-time">Iteración 36 · el sistema de tokens</div>
-      </div>
-    </div>
-    <div class="chat-msg claude">
-      <div class="chat-avatar">C</div>
-      <div>
-        <div class="chat-bubble">Había 6 valores distintos de max-width para texto (520, 560, 580, 600, 620, 680px). Todos son ahora var(--text-width) que es 64ch. Si cambiás una variable en :root, aplica a todo el sitio automáticamente.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="case-section reveal">
-  <div class="chat-log">
-    <div class="chat-msg">
-      <div class="chat-avatar">DL</div>
-      <div>
-        <div class="chat-bubble">bieeeeen, ahora tengo una idea más jajajaja — vos y el trabajo que hicimos juntos en este portfolio es nuestro último caso de trabajo, y tenés todo para crearlo!</div>
-        <div class="chat-time">Iteración 38 · el meta-caso</div>
-      </div>
-    </div>
-    <div class="chat-msg claude">
-      <div class="chat-avatar">C</div>
-      <div>
-        <div class="chat-bubble">Jajaja no me la esperaba. Es una idea brillante — y tiene toda la coherencia del mundo dentro del portfolio.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Gamificación: demo real -->
-<div class="case-section-narrow reveal">
-  <div class="case-section-tag">El siguiente experimento</div>
-  <h2>De portfolio a <span class="grad">curso SCORM gamificado</span>.</h2>
-  <p>Si este portfolio demuestra que sé construir una experiencia web con IA, el siguiente paso fue demostrarlo en e-learning. El resultado: un curso SCORM sobre gamificación aplicada, diseñado e implementado íntegramente con asistencia de IA en menos de dos semanas.</p>
-</div>
-
-<div class="case-section reveal">
-  <div class="scorm-demo-card">
-    <div class="scorm-demo-preview" aria-hidden="true">
-      <div class="scorm-demo-screen">
-        <div class="scorm-demo-topbar">
-          <div class="scorm-demo-dots"><span></span><span></span><span></span></div>
-          <span class="scorm-demo-url">cursogamificacion · SCORM 1.2</span>
+  <div class="gamif-showcase">
+    <div class="gamif-visual">
+      <div class="gamif-visual-content">
+        <div class="gamif-chars">
+          <div class="gamif-char">
+            <img src="img/sofia.jpg" alt="Sofía — personaje guía del curso" loading="lazy" width="96" height="96">
+            <span class="gamif-char-name">Sofía</span>
+          </div>
+          <div class="gamif-char">
+            <img src="img/pedro.jpg" alt="Pedro — personaje guía del curso" loading="lazy" width="96" height="96">
+            <span class="gamif-char-name">Pedro</span>
+          </div>
         </div>
-        <div class="scorm-demo-body">
-          <div class="scorm-demo-title">Gamificación<br>en e-learning</div>
-          <div class="scorm-demo-chars">
-            <div class="scorm-demo-char scorm-demo-char--sofia">
-              <svg viewBox="0 0 60 80" width="60" height="80">
-                <ellipse cx="30" cy="18" rx="14" ry="16" fill="#E0B088"/>
-                <rect x="14" y="32" width="32" height="36" rx="6" fill="#6366f1"/>
-                <ellipse cx="22" cy="14" rx="11" ry="14" fill="#3B1F12"/>
-                <ellipse cx="38" cy="14" rx="11" ry="14" fill="#3B1F12"/>
-                <circle cx="26" cy="19" r="2.5" fill="#3B1F12"/>
-                <circle cx="34" cy="19" r="2.5" fill="#3B1F12"/>
-                <path d="M26 25 Q30 28 34 25" stroke="#B8855E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                <rect x="12" y="32" width="7" height="22" rx="3.5" fill="#E0B088"/>
-                <rect x="41" y="32" width="7" height="22" rx="3.5" fill="#E0B088"/>
-                <rect x="17" y="68" width="10" height="12" rx="3" fill="#3B1F12"/>
-                <rect x="33" y="68" width="10" height="12" rx="3" fill="#3B1F12"/>
-              </svg>
-              <span>Sofía</span>
-            </div>
-            <div class="scorm-demo-char scorm-demo-char--pedro">
-              <svg viewBox="0 0 60 80" width="60" height="80">
-                <ellipse cx="30" cy="18" rx="14" ry="16" fill="#D4956A"/>
-                <rect x="14" y="32" width="32" height="36" rx="6" fill="#f59e0b"/>
-                <ellipse cx="30" cy="10" rx="14" ry="9" fill="#1a0a00"/>
-                <circle cx="25" cy="19" r="2.5" fill="#1a0a00"/>
-                <circle cx="35" cy="19" r="2.5" fill="#1a0a00"/>
-                <path d="M26 25 Q30 28 34 25" stroke="#B8855E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                <ellipse cx="22" cy="22" rx="3.5" ry="2" fill="#B8855E" opacity="0.4"/>
-                <ellipse cx="38" cy="22" rx="3.5" ry="2" fill="#B8855E" opacity="0.4"/>
-                <rect x="12" y="32" width="7" height="22" rx="3.5" fill="#D4956A"/>
-                <rect x="41" y="32" width="7" height="22" rx="3.5" fill="#D4956A"/>
-                <rect x="17" y="68" width="10" height="12" rx="3" fill="#1a0a00"/>
-                <rect x="33" y="68" width="10" height="12" rx="3" fill="#1a0a00"/>
-              </svg>
-              <span>Pedro</span>
-            </div>
-          </div>
-          <div class="scorm-demo-badge">
-            <span>★</span> 10 días · 1 prototipo real
-          </div>
+        <div class="gamif-title">Gamificación en e-learning</div>
+        <div class="gamif-sub">Curso SCORM 1.2 · Foco Estudio</div>
+        <div class="gamif-badge">
+          <span>★</span> 10 días · Personalización por nombre
         </div>
       </div>
     </div>
 
-    <div class="scorm-demo-info">
-      <div class="scorm-demo-tag">Demo interactivo · SCORM 1.2</div>
-      <h3 class="scorm-demo-h">Gamificación en e-learning</h3>
-      <p class="scorm-demo-desc">Curso desarrollado con IA en dos semanas. Introduce conceptos de gamificación aplicada al e-learning corporativo a través de Sofía y Pedro, dos personajes que guían el recorrido. Incluye personalización por nombre, mecánicas de progreso y estructura de 10 días.</p>
-      <ul class="scorm-demo-features">
-        <li>Bienvenida personalizada con nombre del usuario</li>
-        <li>Personajes animados con SVG — Sofía y Pedro</li>
-        <li>Programa de 10 días con estructura diaria</li>
-        <li>Empaquetado SCORM 1.2 con manifiesto imsmanifest.xml</li>
-        <li>Diseñado e implementado 100% con asistencia de IA</li>
-      </ul>
-      <a href="https://damianlencina.github.io/cursogamificacion/" target="_blank" rel="noopener" class="scorm-demo-cta">
+    <div class="gamif-info">
+      <div>
+        <div class="case-section-tag">Qué incluye</div>
+        <h3 style="font-size: clamp(18px,2vw,22px); font-weight:600; margin: 8px 0 16px; letter-spacing:-0.02em; color: var(--ink);">Un curso que los usuarios quieren recorrer.</h3>
+      </div>
+
+      <div class="gamif-features">
+        <div class="gamif-feature">
+          <div class="gamif-feature-dot"></div>
+          <span>Bienvenida personalizada — el sistema llama al usuario por su nombre desde el primer slide</span>
+        </div>
+        <div class="gamif-feature">
+          <div class="gamif-feature-dot"></div>
+          <span>Sofía y Pedro como guías del recorrido — personajes con historia y voz propia</span>
+        </div>
+        <div class="gamif-feature">
+          <div class="gamif-feature-dot"></div>
+          <span>Programa de 10 días con estructura diaria clara y progresión de dificultad</span>
+        </div>
+        <div class="gamif-feature">
+          <div class="gamif-feature-dot"></div>
+          <span>Mecánicas de gamificación aplicadas al contenido — no decorativas</span>
+        </div>
+        <div class="gamif-feature">
+          <div class="gamif-feature-dot"></div>
+          <span>Empaquetado SCORM 1.2, compatible con Moodle, TalentLMS, Canvas y similares</span>
+        </div>
+      </div>
+
+      <a href="https://damianlencina.github.io/cursogamificacion/" target="_blank" rel="noopener" class="gamif-cta">
         Explorar el curso demo
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
@@ -667,62 +531,92 @@
   </div>
 </div>
 
-<!-- La tesis -->
-
+<!-- Cómo trabajamos -->
 <div class="case-section-narrow reveal">
-  <div class="case-section-tag">La tesis</div>
-  <h2>No es saber los comandos. Es saber <span class="grad">qué pedirle</span>.</h2>
-  <p>El dominio de una herramienta nueva no se mide por la cantidad de prompts que conocés. Se mide por la <strong>claridad con la que podés articular un problema</strong>, la precisión con la que podés evaluar una solución, y la honestidad con la que podés decir "quedó feo, rehacelo".</p>
+  <div class="case-section-tag">Cómo trabajamos</div>
+  <h2>Cuatro pasos. <span class="grad">Sin vueltas</span>.</h2>
+  <p>No hacemos cursos por encargo. Los co-diseñamos con el cliente. Cada proyecto empieza con una pregunta real y termina con algo que la gente usa.</p>
+</div>
 
-  <div class="case-highlight">
-    <div class="case-highlight-label">El punto</div>
-    <p>Eso es exactamente lo que hace un buen diseñador instruccional con cualquier tecnología: <strong>no dominar la herramienta, sino dominar el criterio para usarla bien</strong>. La IA no reemplaza el juicio estético, la visión narrativa ni el conocimiento del usuario. Los amplifica — si sabés qué amplificar.</p>
+<div class="case-section reveal">
+  <div class="proceso-steps">
+    <div class="proceso-step">
+      <div class="proceso-step-num">01</div>
+      <div class="proceso-step-bar"><div class="proceso-step-bar-fill" style="width:100%"></div></div>
+      <div class="proceso-step-title">Diagnóstico</div>
+      <p class="proceso-step-desc">Entendemos el problema antes de proponer soluciones. Qué necesita aprender la persona, en qué contexto, con qué limitaciones.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="proceso-step-num">02</div>
+      <div class="proceso-step-bar"><div class="proceso-step-bar-fill" style="width:75%"></div></div>
+      <div class="proceso-step-title">Diseño instruccional</div>
+      <p class="proceso-step-desc">Objetivos, secuencia, narrativa. El guion completo antes de abrir ninguna herramienta de producción.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="proceso-step-num">03</div>
+      <div class="proceso-step-bar"><div class="proceso-step-bar-fill" style="width:50%"></div></div>
+      <div class="proceso-step-title">Producción</div>
+      <p class="proceso-step-desc">Storyline, Rise, o lo que mejor resuelva el problema. Interactividad, personajes, evaluaciones. Entrega en SCORM.</p>
+    </div>
+    <div class="proceso-step">
+      <div class="proceso-step-num">04</div>
+      <div class="proceso-step-bar"><div class="proceso-step-bar-fill" style="width:25%"></div></div>
+      <div class="proceso-step-title">Revisión y ajuste</div>
+      <p class="proceso-step-desc">Rondas de feedback hasta que quede bien. Sin sorpresas. El cliente aprueba antes de la entrega final.</p>
+    </div>
   </div>
 </div>
 
-<!-- 4 insights finales -->
+<!-- Diferencial -->
 <div class="case-section reveal">
   <div class="method-grid reveal-stagger">
     <div class="method-item">
-      <div class="method-num">01 · Tesis</div>
-      <div class="method-title">El criterio es el diferencial</div>
-      <p class="method-desc">Cualquier persona puede escribir "haceme un portfolio". Lo que diferencia el resultado es saber cuándo algo no funciona, por qué no funciona, y cómo describir lo que sí querés.</p>
+      <div class="method-num">Criterio</div>
+      <div class="method-title">Pedagogía primero</div>
+      <p class="method-desc">La herramienta no define el curso. El objetivo de aprendizaje sí. Siempre empezamos por el por qué antes de decidir el cómo.</p>
     </div>
     <div class="method-item">
-      <div class="method-num">02 · Tesis</div>
-      <div class="method-title">Velocidad con propósito</div>
-      <p class="method-desc">Lo que antes requería semanas de aprendizaje técnico se comprimió en una sesión. Pero la velocidad no es el logro — el logro es que esa velocidad estuvo al servicio de decisiones de diseño reales.</p>
+      <div class="method-num">Experiencia</div>
+      <div class="method-title">+7 años en contexto real</div>
+      <p class="method-desc">No desde un escritorio teórico. Desde el piso de un supermercado, desde un depósito, desde una caja. Sabemos cómo aprende alguien que tiene cuatro tareas encima.</p>
     </div>
     <div class="method-item">
-      <div class="method-num">03 · Tesis</div>
-      <div class="method-title">La iteración como método</div>
-      <p class="method-desc">49 versiones no son 49 intentos fallidos. Son 49 decisiones tomadas. Cada ZIP es un checkpoint de criterio aplicado.</p>
+      <div class="method-num">Herramienta</div>
+      <div class="method-title">IA como acelerador</div>
+      <p class="method-desc">Usamos IA para guionar más rápido, generar prototipos y optimizar tiempos. El criterio instruccional sigue siendo humano. La velocidad, no.</p>
     </div>
     <div class="method-item">
-      <div class="method-num">04 · Tesis</div>
-      <div class="method-title">Aprender haciendo</div>
-      <p class="method-desc">CSS, design tokens, optimización de imágenes, sliders interactivos. Ninguno fue aprendido antes de necesitarlo. Cada concepto apareció en el momento exacto en que hacía falta.</p>
+      <div class="method-num">Resultado</div>
+      <div class="method-title">Cursos que se terminan</div>
+      <p class="method-desc">El abandono es el problema silencioso del e-learning corporativo. Diseñamos contra eso desde el día uno: estructura, ritmo y engagement son métricas de diseño, no de suerte.</p>
     </div>
   </div>
 </div>
 
-<!-- Cierre -->
-<div class="case-section-narrow reveal">
-  <div class="case-highlight">
-    <div class="case-highlight-label">Damián Lencina · 2026</div>
-    <p>"Este portfolio no existía. Ahora existe. Y el proceso de construirlo es, en sí mismo, <strong>la demostración más clara de cómo trabajo</strong>."</p>
+<!-- CTA Foco Estudio -->
+<div class="case-section reveal">
+  <div class="foco-link-block">
+    <div>
+      <div class="foco-link-label">Foco Estudio · Sitio oficial</div>
+      <div class="foco-link-title">¿Querés ver el estudio completo?</div>
+      <p class="foco-link-sub">Portfolio de cursos, servicios, proceso y contacto — todo en el sitio de Foco Estudio.</p>
+    </div>
+    <a href="https://damianlencina.github.io/focoestudio/" target="_blank" rel="noopener" class="foco-link-btn">
+      Ir a Foco Estudio
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
   </div>
 </div>
 
 <!-- Case nav -->
 <div class="case-nav">
-  <a href="caso_magoya.html" class="case-nav-item">
-    <div class="case-nav-direction">← Anterior · Caso 03</div>
-    <div class="case-nav-title">Magoya · Productora cinéfila</div>
+  <a href="index.html#trabajo" class="case-nav-item">
+    <div class="case-nav-direction">← Volver</div>
+    <div class="case-nav-title">Todos los casos</div>
   </a>
-  <a href="index.html" class="case-nav-item case-nav-item--next">
-    <div class="case-nav-direction">Fin del recorrido →</div>
-    <div class="case-nav-title">Volver al portfolio</div>
+  <a href="caso_transformacion.html" class="case-nav-item case-nav-item--next">
+    <div class="case-nav-direction">Siguiente · Caso 02 →</div>
+    <div class="case-nav-title">COTO · Siete años transformando el e-learning</div>
   </a>
 </div>
 
@@ -730,20 +624,20 @@
 <section class="footer-cta">
   <div class="footer-inner">
     <div>
-      <div class="footer-cta-tag">Trabajemos juntos</div>
-      <h2>¿Tenés un proyecto que <span class="grad">merece</span> esta misma mirada?</h2>
-      <p class="footer-cta-sub">Si llegaste hasta acá, ya viste lo que sé hacer. Hablemos de qué podemos construir juntos.</p>
+      <div class="footer-cta-tag">Hablemos</div>
+      <h2>¿Tu empresa necesita e-learning que <span class="grad">funcione</span>?</h2>
+      <p class="footer-cta-sub">Contame el proyecto. En 24hs te respondo con una propuesta concreta.</p>
       <div class="contact-actions">
-        <a href="mailto:dami.lencina21@gmail.com" class="btn btn-light">
-          Escribime
+        <a href="https://wa.me/5491139127411" target="_blank" rel="noopener" class="btn btn-light">
+          WhatsApp
           <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="https://www.linkedin.com/in/damian-ezequiel-lencina/" target="_blank" rel="noopener" class="btn btn-dark-ghost">LinkedIn</a>
+        <a href="mailto:dami.lencina21@gmail.com" class="btn btn-dark-ghost">Escribime</a>
       </div>
     </div>
 
     <div class="footer-fin">
-      <div class="footer-fin-text">End of file</div>
+      <div class="footer-fin-text">Foco Estudio · <a href="https://damianlencina.github.io/focoestudio/" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; text-underline-offset: 3px; opacity: 0.6;">focoestudio</a></div>
       <div class="footer-fin-meta">© <span class="footer-year">2026</span> · DL · v2.0/Z</div>
     </div>
   </div>
