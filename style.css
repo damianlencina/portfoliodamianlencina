@@ -2551,3 +2551,172 @@ section { padding: var(--gap-3xl) var(--side-pad); position: relative; }
   color: var(--ink-mute);
   opacity: 0.5;
 }
+
+/* ============================================
+   SCORM DEMO CARD (caso_ia)
+   ============================================ */
+.scorm-demo-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  background: var(--bg);
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+}
+@media (max-width: 860px) {
+  .scorm-demo-card { grid-template-columns: 1fr; }
+}
+
+.scorm-demo-preview {
+  background: linear-gradient(135deg, #0f0a1e 0%, #1a0f35 50%, #0f0a1e 100%);
+  padding: 32px 24px;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.scorm-demo-screen {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 340px;
+}
+.scorm-demo-topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.scorm-demo-dots {
+  display: flex;
+  gap: 5px;
+}
+.scorm-demo-dots span {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+}
+.scorm-demo-url {
+  font-family: var(--type-mono);
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.04em;
+}
+.scorm-demo-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.scorm-demo-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #a78bfa, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.scorm-demo-chars {
+  display: flex;
+  gap: 24px;
+  align-items: flex-end;
+  justify-content: center;
+}
+.scorm-demo-char {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.scorm-demo-char span {
+  font-family: var(--type-mono);
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.06em;
+}
+.scorm-demo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(99,102,241,0.25);
+  border: 1px solid rgba(99,102,241,0.4);
+  border-radius: 20px;
+  font-family: var(--type-mono);
+  font-size: 11px;
+  color: #a78bfa;
+  letter-spacing: 0.04em;
+}
+
+.scorm-demo-info {
+  padding: 32px;
+}
+.scorm-demo-tag {
+  font-family: var(--type-mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.scorm-demo-h {
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.scorm-demo-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-mute);
+  margin-bottom: 20px;
+}
+.scorm-demo-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.scorm-demo-features li {
+  font-size: 13px;
+  color: var(--ink-mute);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.5;
+}
+.scorm-demo-features li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--ink);
+  font-family: var(--type-mono);
+  font-size: 11px;
+}
+.scorm-demo-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--type-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink-line);
+  padding-bottom: 3px;
+  transition: gap 0.2s var(--ease-out), border-color 0.2s;
+}
+.scorm-demo-cta:hover { gap: 14px; border-color: var(--ink); }
