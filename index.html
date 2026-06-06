@@ -155,19 +155,15 @@
         </div>
       </div>
 
-      <!-- Video card a la derecha -->
+      <!-- Retrato a la derecha -->
       <aside class="hero-video">
-        <button class="hero-video-card" id="avatarPlayer" aria-label="Reproducir video de presentación">
+        <div class="hero-portrait">
           <picture><source srcset="img/retrato_avatar.webp" type="image/webp"><img alt="Damián Lencina" loading="eager" fetchpriority="high" class="hero-video-img" src="img/retrato_avatar.jpg"></picture>
-          <span class="hero-video-overlay" aria-hidden="true"></span>
-          <span class="hero-video-play" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+          <span class="hero-portrait-meta">
+            <span class="hero-portrait-name">Damián Lencina</span>
+            <span class="hero-portrait-role">Diseño de aprendizaje · Buenos Aires</span>
           </span>
-          <span class="hero-video-meta">
-            <span class="hero-video-tag">▶ Presentación · 90 seg</span>
-            <span class="hero-video-name">Damián Lencina</span>
-          </span>
-        </button>
+        </div>
       </aside>
 
     </div>
@@ -194,18 +190,6 @@
 
   </div>
 </section>
-
-<!-- VIDEO MODAL -->
-<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video de presentación">
-  <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
-  <div class="video-modal-inner">
-    <button class="video-modal-close" id="videoModalClose" aria-label="Cerrar video">✕</button>
-    <div class="video-modal-frame">
-      <div id="ytPlayer"></div>
-    </div>
-    <p class="video-modal-caption" id="videoModalCaption">Video de presentación · Placeholder</p>
-  </div>
-</div>
 
 <!-- SOBRE (compacto · primero para anclar quién soy) -->
 <section class="about-section about-section--compact" id="sobre">
@@ -235,16 +219,16 @@
 
   <div class="work-wrap">
 
-    <!-- Featured case -->
-    <a href="caso_transformacion.html" class="featured-case reveal">
+    <!-- Featured case · IA -->
+    <a href="caso_ia.html" class="featured-case featured-case--ia reveal">
       <div class="featured-case-header">
         <span class="featured-case-num">01 / Featured</span>
-        <span class="featured-case-tag">COTO CICSA · 2019 → Hoy</span>
+        <span class="featured-case-tag">Claude AI + DL · 2026</span>
       </div>
       <div class="featured-case-body">
         <div class="featured-case-content">
-          <h3>Siete años transformando el e-learning de una <span class="grad">compañía</span>.</h3>
-          <p>De junior a responsable del área. <strong>Cuando llegué a COTO no había sistema</strong>: cada curso era una pieza aparte, sin identidad visual, sin estrategia. Hoy hay una plataforma Moodle institucional, un método replicable y una arquitectura que alcanza a casi veinte mil colaboradores.</p>
+          <h3>Crear e-learning moderno <span class="grad">con IA</span>.</h3>
+          <p>El antes era un mensaje de texto. El después: este portfolio y un curso SCORM gamificado, construidos en conversación con IA. <strong>No se trata de saber los comandos, sino de saber qué pedir</strong> — el mismo criterio de diseño instruccional aplicado a las herramientas del presente.</p>
           <span class="featured-case-link">
             Ver caso completo
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -252,20 +236,20 @@
         </div>
         <div class="featured-case-stats">
           <div class="stat-box">
-            <div class="stat-label">Años</div>
-            <div class="stat-value grad">+<span class="counter" data-target="7">7</span></div>
+            <div class="stat-label">Versiones</div>
+            <div class="stat-value grad">+<span class="counter" data-target="49">49</span></div>
           </div>
           <div class="stat-box">
-            <div class="stat-label">Áreas integradas</div>
-            <div class="stat-value"><span class="counter" data-target="16">16</span>+</div>
+            <div class="stat-label">Páginas web</div>
+            <div class="stat-value"><span class="counter" data-target="6">6</span></div>
           </div>
           <div class="stat-box">
-            <div class="stat-label">Cursos producidos</div>
-            <div class="stat-value"><span class="counter" data-target="80">80</span>+</div>
+            <div class="stat-label">Curso SCORM</div>
+            <div class="stat-value"><span class="counter" data-target="1">1</span></div>
           </div>
           <div class="stat-box">
-            <div class="stat-label">Personas alcanzadas</div>
-            <div class="stat-value grad"><span class="counter" data-target="19852" data-format="thousand">19.852</span></div>
+            <div class="stat-label">Peso optimizado</div>
+            <div class="stat-value grad">−68%</div>
           </div>
         </div>
       </div>
@@ -274,12 +258,27 @@
     <!-- Grid 3 cards (carrusel horizontal en mobile) -->
     <div class="work-grid work-grid--carousel reveal-stagger">
 
+      <a href="caso_transformacion.html" class="work-item">
+        <div class="work-thumb">
+          <picture><source srcset="img/despues_storyline_portada.webp" type="image/webp"><img loading="lazy" alt="COTO e-learning — transformación del área" src="img/despues_storyline_portada.jpg"></picture>
+        </div>
+        <div class="work-body">
+          <div class="work-byline">Caso 02 · COTO CICSA · 2019 → Hoy</div>
+          <h3 class="work-title">Siete años transformando un <span class="grad">área</span>.</h3>
+          <p class="work-desc">De junior a responsable. Una plataforma Moodle institucional, un método replicable y una arquitectura que alcanza a casi veinte mil colaboradores.</p>
+          <span class="work-link">
+            Ver caso
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
       <a href="caso_coto.html" class="work-item">
         <div class="work-thumb">
           <picture><source srcset="img/mp_slide_01_portada.webp" type="image/webp"><img loading="lazy" alt="Curso Medios de Pago — portada" src="img/mp_slide_01_portada.jpg"></picture>
         </div>
         <div class="work-body">
-          <div class="work-byline">Caso 02 · COTO · Medios de Pago</div>
+          <div class="work-byline">Caso 03 · COTO · Medios de Pago</div>
           <h3 class="work-title">¿Cómo hacemos un curso <span class="grad">desde cero</span>?</h3>
           <p class="work-desc">El método de cuatro etapas en un caso completo: diseño instruccional, sistema visual, video filmado en planta y evaluación final.</p>
           <span class="work-link">
@@ -298,7 +297,7 @@
               <span></span><span></span><span></span><span></span><span></span>
             </div>
             <div class="magoya-thumb-content">
-              <div class="magoya-thumb-tag">▸ Caso 03 · 2016 → Hoy</div>
+              <div class="magoya-thumb-tag">▸ Caso 04 · 2016 → Hoy</div>
               <div class="magoya-thumb-logo">
                 <span class="magoya-logo-mark">▸</span>magoya<span class="magoya-logo-accent">cine</span>
               </div>
@@ -307,29 +306,9 @@
           </div>
         </div>
         <div class="work-body">
-          <div class="work-byline">Caso 03 · Magoya · 2016 → Hoy</div>
+          <div class="work-byline">Caso 04 · Magoya · 2016 → Hoy</div>
           <h3 class="work-title">Productora <span class="grad">cinéfila</span></h3>
           <p class="work-desc">Sitio editorial, canal de YouTube e Instagram. Críticas, festivales y producción audiovisual propia.</p>
-          <span class="work-link">
-            Ver caso
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </a>
-
-      <a href="caso_ia.html" class="work-item work-item--ia">
-        <div class="work-thumb">
-          <div class="ia-thumb-grid"></div>
-          <div class="ia-thumb-inner">
-            <div class="ia-thumb-tag">Caso 04 · v52/Z</div>
-            <div class="ia-thumb-title">Este portfolio<br>es el caso<span class="ia-cursor">_</span></div>
-            <div class="ia-thumb-sub">$ claude --build portfolio</div>
-          </div>
-        </div>
-        <div class="work-body">
-          <div class="work-byline">Caso 04 · Claude AI + DL · 2026</div>
-          <h3 class="work-title">Aprender a crear con <span class="grad">IA</span>.</h3>
-          <p class="work-desc">El antes era un mensaje de texto. El después es este portfolio. El proceso de construirlo es la demostración.</p>
           <span class="work-link">
             Ver caso
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -439,13 +418,33 @@
         </a>
       </div>
 
-      <div class="personal-channels">
-        <span class="personal-channels-label">O contactame directo:</span>
-        <a href="mailto:dami.lencina21@gmail.com" class="personal-channel">Email</a>
-        <span class="personal-channels-sep">·</span>
-        <a href="https://www.linkedin.com/in/damian-ezequiel-lencina/" target="_blank" rel="noopener" class="personal-channel">LinkedIn</a>
-        <span class="personal-channels-sep">·</span>
-        <a href="https://www.instagram.com/magoyacine" target="_blank" rel="noopener" class="personal-channel">Instagram</a>
+      <div class="direct-contact">
+        <span class="direct-contact-label">O contactame directo</span>
+        <div class="direct-contact-cards">
+          <a href="https://wa.me/5491139127411?text=Hola%20Dami%C3%A1n%2C%20vi%20tu%20portfolio%20y%20quiero%20hablar%20sobre%20un%20proyecto." target="_blank" rel="noopener" class="direct-card direct-card--wa">
+            <span class="direct-card-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5a11.93 11.93 0 0 0-17 16.5L2 22l2.13-1.43A11.93 11.93 0 1 0 20.5 3.5Zm-8.5 18a9.93 9.93 0 0 1-5.06-1.38l-.36-.21-2.96.78.79-2.88-.24-.37A9.93 9.93 0 1 1 12 21.5Zm5.45-7.42c-.3-.15-1.76-.87-2.03-.97s-.47-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a8.13 8.13 0 0 1-4.07-3.56c-.31-.53.31-.5.88-1.65.1-.2.05-.37-.02-.52s-.67-1.62-.92-2.22c-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37s-1.05 1.02-1.05 2.5 1.07 2.89 1.22 3.09 2.11 3.22 5.12 4.51c.72.31 1.27.5 1.71.64.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.42s.25-1.29.17-1.42c-.07-.13-.27-.2-.57-.34Z"/></svg>
+            </span>
+            <span class="direct-card-body">
+              <span class="direct-card-name">WhatsApp</span>
+              <span class="direct-card-value">+54 9 11 3912 7411</span>
+            </span>
+          </a>
+          <a href="mailto:dami.lencina21@gmail.com" class="direct-card direct-card--mail">
+            <span class="direct-card-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            </span>
+            <span class="direct-card-body">
+              <span class="direct-card-name">Email</span>
+              <span class="direct-card-value">dami.lencina21@gmail.com</span>
+            </span>
+          </a>
+        </div>
+        <div class="direct-contact-social">
+          <a href="https://www.linkedin.com/in/damian-ezequiel-lencina/" target="_blank" rel="noopener" class="personal-channel">LinkedIn</a>
+          <span class="personal-channels-sep">·</span>
+          <a href="https://www.instagram.com/magoyacine" target="_blank" rel="noopener" class="personal-channel">Instagram</a>
+        </div>
       </div>
     </div>
 
@@ -470,16 +469,17 @@
       <div class="footer-col">
         <div class="footer-col-label">Casos</div>
         <ul>
-          <li><a href="caso_transformacion.html">01 · COTO Transformación</a></li>
-          <li><a href="caso_coto.html">02 · Medios de Pago</a></li>
-          <li><a href="caso_magoya.html">03 · Magoya</a></li>
-          <li><a href="caso_ia.html">04 · IA + Portfolio</a></li>
+          <li><a href="caso_ia.html">01 · Crear con IA</a></li>
+          <li><a href="caso_transformacion.html">02 · COTO Transformación</a></li>
+          <li><a href="caso_coto.html">03 · Medios de Pago</a></li>
+          <li><a href="caso_magoya.html">04 · Magoya</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Encontrame</div>
         <ul>
-          <li><a href="mailto:dami.lencina21@gmail.com">Email</a></li>
+          <li><a href="https://wa.me/5491139127411" target="_blank" rel="noopener">WhatsApp · +54 9 11 3912 7411</a></li>
+          <li><a href="mailto:dami.lencina21@gmail.com">dami.lencina21@gmail.com</a></li>
           <li><a href="https://www.linkedin.com/in/damian-ezequiel-lencina/" target="_blank" rel="noopener">LinkedIn</a></li>
           <li><a href="https://www.instagram.com/magoyacine" target="_blank" rel="noopener">Instagram</a></li>
           <li><a href="Damian_Lencina_Resumen.pdf" download>Resumen (PDF)</a></li>

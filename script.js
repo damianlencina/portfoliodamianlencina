@@ -185,64 +185,8 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeLightbox();
-      closeVideoModal();
     }
   });
-
-  /* ============================ Video modal (avatar player) ============================ */
-  const avatarPlayer = document.getElementById('avatarPlayer');
-  const videoModal = document.getElementById('videoModal');
-  const videoModalClose = document.getElementById('videoModalClose');
-  const videoModalBackdrop = document.getElementById('videoModalBackdrop');
-  let ytPlayer = null;
-  let ytReady = false;
-
-  // Cargar YouTube API
-  function loadYouTubeAPI() {
-    if (window.YT && window.YT.Player) {
-      ytReady = true;
-      return;
-    }
-    if (document.getElementById('yt-api-script')) return;
-    const tag = document.createElement('script');
-    tag.id = 'yt-api-script';
-    tag.src = 'https://www.youtube.com/iframe_api';
-    document.body.appendChild(tag);
-    window.onYouTubeIframeAPIReady = () => { ytReady = true; };
-  }
-
-  function openVideoModal() {
-    if (!videoModal) return;
-    videoModal.classList.add('show');
-    document.body.style.overflow = 'hidden';
-    loadYouTubeAPI();
-
-    const tryInitPlayer = () => {
-      if (!ytReady) {
-        setTimeout(tryInitPlayer, 100);
-        return;
-      }
-      if (ytPlayer) {
-        ytPlayer.playVideo();
-        return;
-      }
-      ytPlayer = new YT.Player('ytPlayer', {
-        videoId: 'hGl_LCcCFkk', // La Jetée placeholder
-        playerVars: { autoplay: 1, rel: 0, modestbranding: 1 }
-      });
-    };
-    tryInitPlayer();
-  }
-  function closeVideoModal() {
-    if (!videoModal) return;
-    videoModal.classList.remove('show');
-    document.body.style.overflow = '';
-    if (ytPlayer && ytPlayer.pauseVideo) ytPlayer.pauseVideo();
-  }
-
-  if (avatarPlayer) avatarPlayer.addEventListener('click', openVideoModal);
-  if (videoModalClose) videoModalClose.addEventListener('click', closeVideoModal);
-  if (videoModalBackdrop) videoModalBackdrop.addEventListener('click', closeVideoModal);
 
   /* ============================ Año dinámico en footer ============================ */
   document.querySelectorAll('.footer-year').forEach(el => {
