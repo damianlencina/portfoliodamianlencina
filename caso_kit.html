@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem('dl-theme');
+    if(!t){ t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    if(t==='dark'){ document.documentElement.setAttribute('data-theme','dark'); }
+  }catch(e){}
+})();
+</script>
+  <meta name="theme-color" content="#ffffff">
+<title>Caso 02 — Kit de e-learning con IA · De PDF a SCORM sin Storyline · Damián Lencina</title>
+<meta name="description" content="Lideré la construcción de un kit propio, con IA, que convierte un PDF de diseño en un curso SCORM completo. Sin Storyline, sin licencias por asiento, con dos cursos reales ya en producción.">
+<meta name="author" content="Damián Lencina">
+
+<link rel="canonical" href="https://damianlencina.com/caso_kit.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Damián Lencina · Portfolio">
+<meta property="og:url" content="https://damianlencina.com/caso_kit.html">
+<meta property="og:title" content="Caso 02 — Kit de e-learning con IA · De PDF a SCORM sin Storyline · Damián Lencina">
+<meta property="og:description" content="Lideré la construcción de un kit propio, con IA, que convierte un PDF de diseño en un curso SCORM completo. Sin Storyline, sin licencias por asiento, con dos cursos reales ya en producción.">
+<meta property="og:image" content="https://damianlencina.com/img/kit_surtido_conceptos.jpg">
+<meta property="og:image:width" content="1400">
+<meta property="og:image:height" content="700">
+<meta property="og:image:alt" content="Kit de creación de e-learning con IA — curso Surtido sin venta">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Caso 02 — Kit de e-learning con IA · De PDF a SCORM sin Storyline · Damián Lencina">
+<meta name="twitter:description" content="Lideré la construcción de un kit propio, con IA, que convierte un PDF de diseño en un curso SCORM completo. Sin Storyline, sin licencias por asiento, con dos cursos reales ya en producción.">
+<meta name="twitter:image" content="https://damianlencina.com/img/kit_surtido_conceptos.jpg">
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Kit de creación de e-learning con IA — COTO CICSA",
+  "description": "Lideré la construcción de un kit propio, con IA, que convierte un PDF de diseño en un curso SCORM completo. Sin Storyline, sin licencias por asiento, con dos cursos reales ya en producción.",
+  "url": "https://damianlencina.com/caso_kit.html",
+  "author": {
+    "@type": "Person",
+    "name": "Damián Lencina",
+    "url": "https://damianlencina.com/"
+  },
+  "image": "https://damianlencina.com/img/kit_surtido_conceptos.jpg"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="style.css">
+<link rel="stylesheet" href="style.css">
+  </head>
+<body class="case-page">
+<a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-mark">DL <span>·</span> Caso 02/05</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#trabajo">Trabajo</a></li>
+    <li><a href="metodo.html">Método</a></li>
+    <li><a href="notas.html">Notas</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="servicios.html">Servicios</a></li>
+    <li><a href="index.html#contacto" class="nav-cta">Hablemos</a></li>
+  </ul>
+  <div class="nav-end">
+    <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema claro/oscuro" type="button">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- HERO -->
+<section id="main" class="case-hero">
+  <a href="index.html#trabajo" class="case-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Volver al portfolio
+  </a>
+
+  <div class="case-tag">Caso 02 · COTO CICSA · Kit propio · IA aplicada a producción</div>
+
+  <h1 class="case-title">
+    De un PDF a un <span class="grad">SCORM</span>, sin Storyline.
+  </h1>
+
+  <p class="case-lead">
+    En 2026 dejé de producir cursos con software cerrado y lideré la construcción de algo distinto: un <strong>kit propio, hecho en código, entrenado en conversación con IA</strong>, que toma el PDF de diseño de un curso y devuelve un <strong>SCORM</strong> completo — el formato estándar que cualquier plataforma de capacitación (Moodle, Cornerstone, Docebo) sabe leer — con capas, interactividad, gamificación y narración. Ya lo usamos para dos cursos reales, en dos áreas completamente distintas.
+  </p>
+
+  <div class="case-meta">
+    <div class="case-meta-item">
+      <div class="label">Rol</div>
+      <div class="value">Dirección de producto · Arquitectura de contenido</div>
+    </div>
+    <div class="case-meta-item">
+      <div class="label">Herramienta</div>
+      <div class="value">Kit propio + Claude</div>
+    </div>
+    <div class="case-meta-item">
+      <div class="label">Formato de salida</div>
+      <div class="value">SCORM 1.2 · xAPI opcional</div>
+    </div>
+    <div class="case-meta-item">
+      <div class="label">Cursos ya construidos</div>
+      <div class="value">2 (y en crecimiento)</div>
+    </div>
+  </div>
+</section>
+
+<!-- KPIs -->
+<div class="case-section">
+  <div class="case-stats-row reveal">
+    <div class="case-stat">
+      <div class="label">Cursos construidos</div>
+      <div class="value grad"><span class="counter" data-target="2">2</span></div>
+    </div>
+    <div class="case-stat">
+      <div class="label">Diapositivas producidas</div>
+      <div class="value"><span class="counter" data-target="35">35</span></div>
+    </div>
+    <div class="case-stat">
+      <div class="label">Áreas ya cubiertas</div>
+      <div class="value"><span class="counter" data-target="2">2</span></div>
+    </div>
+    <div class="case-stat">
+      <div class="label">Licencias de autor cerrado</div>
+      <div class="value grad">Cero</div>
+    </div>
+  </div>
+</div>
+
+<!-- 01 El problema -->
+<div class="case-section-narrow reveal">
+  <div class="case-section-tag">01 · Por qué cambiar</div>
+  <h2>Un software cerrado tiene un <span class="grad">techo</span>.</h2>
+  <p>Storyline me dio años de cursos funcionando, pero tiene un límite estructural: cada interacción nueva depende de lo que el software permita hacer, cada corrección de diseño es manual, y la fidelidad con la maqueta del diseñador siempre pierde algo en el camino. Además, escalar el equipo significa escalar licencias.</p>
+  <p>La pregunta que me hice no fue "¿cómo hago este curso más rápido en Storyline?" sino <strong>"¿qué pasaría si el curso se generara directamente a partir del PDF de diseño?"</strong>. La respuesta fue construir la herramienta, no buscarla.</p>
+</div>
+
+<!-- Highlight -->
+<div class="case-section-narrow reveal">
+  <div class="case-highlight">
+    <div class="case-highlight-label">El cambio de fondo</div>
+    <p>No tercericé la construcción de esta herramienta. La <strong>dirigí</strong>: definí qué tenía que garantizar el sistema (fidelidad 1:1 con el diseño, accesibilidad, SCORM real, reutilización entre cursos) y trabajé en conversación sostenida con IA para materializarlo en código. Ese es el rol — pensar la arquitectura, no escribir cada línea.</p>
+  </div>
+</div>
+
+<!-- 02 El kit -->
+<div class="case-section-narrow reveal">
+  <div class="case-section-tag">02 · Qué construimos</div>
+  <h2>Un <span class="grad">kit base</span>, no un curso suelto.</h2>
+  <p>La diferencia con "armar un curso en código" es que esto es <strong>infraestructura reutilizable</strong>: un motor de diapositivas/capas/pop-ups, un sistema de diseño con una paleta de color propia por área de la empresa (Salón, Servicio Médico, y las que sigan), un wrapper SCORM 1.2, un adaptador xAPI opcional y un narrador por voz — todo genérico, todo documentado, todo pensado para que el próximo curso lo herede gratis.</p>
+</div>
+
+<div class="case-section reveal">
+  <div class="method-grid reveal-stagger">
+    <div class="method-item">
+      <div class="method-num">Motor</div>
+      <div class="method-title">Diapositivas · capas · pop-ups</div>
+      <p class="method-desc">Tres niveles de estado con un contrato formal: diapositiva a pantalla completa, capas que cambian sin salir de ella (tabs, casos, preguntas), pop-ups accesibles con foco atrapado.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">Diseño</div>
+      <div class="method-title">Sistema de tokens por área</div>
+      <p class="method-desc">Una paleta y tipografía por categoría de la empresa (Salón, Servicio Médico, y las que sigan), sin escribir un color nuevo por curso — se hereda del sistema.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">SCORM</div>
+      <div class="method-title">Progreso real, guardado real</div>
+      <p class="method-desc">Wrapper SCORM 1.2 con bookmark de reingreso, tiempo de sesión y estado persistido — el curso recuerda dónde te quedaste, como cualquier LMS espera.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">Voz</div>
+      <div class="method-title">Narración automática</div>
+      <p class="method-desc">Cada diapositiva se puede escuchar. Narrador por voz con velocidad adaptada a la calidad de la voz disponible en cada navegador.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">Fidelidad</div>
+      <div class="method-title">1:1 con la maqueta</div>
+      <p class="method-desc">El PDF de diseño se exporta en capas y se posiciona en porcentajes, no en píxeles fijos — se ve igual en un celular que en un monitor 4K, sin recodificar nada.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">Accesibilidad</div>
+      <div class="method-title">Pensada desde el motor</div>
+      <p class="method-desc">Navegación por teclado, anuncios para lectores de pantalla en cada cambio de diapositiva, y respeto de <em>prefers-reduced-motion</em> — no como agregado, como base.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 03 Primer curso real -->
+<div class="case-section-narrow reveal">
+  <div class="case-section-tag">03 · Primera prueba real</div>
+  <h2>"Surtido sin venta" — Área <span class="grad">Salón</span>.</h2>
+  <p>El curso que fijó el patrón. Control de stock fantasma para operadores de salón: qué es el "falso stock", cómo se detecta, cómo se reporta y qué hacer con los productos que no rotan. Quince diapositivas, todas con captura fiel del PDF de diseño, con la interactividad y la gamificación construidas encima.</p>
+</div>
+
+<div class="case-section reveal">
+  <figure class="case-image">
+    <picture><source srcset="img/kit_surtido_portada.webp" type="image/webp"><img loading="lazy" alt="Portada del curso Surtido sin venta" src="img/kit_surtido_portada.jpg"></picture>
+    <figcaption class="case-image-caption">Portada · Área Salón · narración y logros activos desde el primer segundo</figcaption>
+  </figure>
+
+  <div class="case-image-pair">
+    <figure>
+      <span class="tag">El alumno salta a cualquier tema con un clic</span>
+      <picture><source srcset="img/kit_surtido_indice.webp" type="image/webp"><img loading="lazy" alt="Índice de contenidos" src="img/kit_surtido_indice.jpg"></picture>
+    </figure>
+    <figure>
+      <span class="tag">7 conceptos para explorar, sin salir de la pantalla</span>
+      <picture><source srcset="img/kit_surtido_conceptos.webp" type="image/webp"><img loading="lazy" alt="Explorador de conceptos" src="img/kit_surtido_conceptos.jpg"></picture>
+    </figure>
+  </div>
+</div>
+
+<div class="case-section-narrow reveal">
+  <div class="case-highlight">
+    <div class="case-highlight-label">Gamificación real, no decorativa</div>
+    <p>El "Laboratorio de falso stock" hace contar unidades en góndola y depósito, y compara en vivo contra lo que dice el sistema. No es una animación — es la lógica del contenido real, jugable.</p>
+  </div>
+</div>
+
+<div class="case-section reveal">
+  <div class="case-image-pair">
+    <figure>
+      <span class="tag aurora">Laboratorio interactivo</span>
+      <picture><source srcset="img/kit_surtido_laboratorio.webp" type="image/webp"><img loading="lazy" alt="Laboratorio de falso stock" src="img/kit_surtido_laboratorio.jpg"></picture>
+    </figure>
+    <figure>
+      <span class="tag aurora">Minijuego · 10 niveles</span>
+      <picture><source srcset="img/kit_surtido_minijuego.webp" type="image/webp"><img loading="lazy" alt="Minijuego adiviná el concepto" src="img/kit_surtido_minijuego.jpg"></picture>
+    </figure>
+  </div>
+
+  <figure class="case-image">
+    <picture><source srcset="img/kit_surtido_video.webp" type="image/webp"><img loading="lazy" alt="Video integrado del curso" src="img/kit_surtido_video.jpg"></picture>
+    <figcaption class="case-image-caption">Video embebido con transcripción accesible y tracking propio en SCORM</figcaption>
+  </figure>
+</div>
+
+<!-- 04 Segundo curso: escala -->
+<div class="case-section-narrow reveal">
+  <div class="case-section-tag">04 · La prueba que importa</div>
+  <h2>"Prevención cardiovascular" — Área <span class="grad">Servicio Médico</span>.</h2>
+  <p>El primer curso demuestra que la idea funciona. El segundo demuestra que <strong>el sistema escala</strong>: mismo motor, mismo wrapper SCORM, cero líneas de código genérico tocadas — y sin embargo un curso completamente distinto en tema, paleta y tono, porque el sistema de diseño lo resuelve por herencia, no por copia y pegado.</p>
+</div>
+
+<div class="case-section reveal">
+  <div class="case-image-pair">
+    <figure>
+      <span class="tag">Área Salón</span>
+      <picture><source srcset="img/kit_surtido_portada.webp" type="image/webp"><img loading="lazy" alt="Portada del curso Surtido sin venta" src="img/kit_surtido_portada.jpg"></picture>
+    </figure>
+    <figure>
+      <span class="tag aurora">Área Servicio Médico</span>
+      <picture><source srcset="img/kit_cardio_portada.webp" type="image/webp"><img loading="lazy" alt="Portada del curso Prevención cardiovascular" src="img/kit_cardio_portada.jpg"></picture>
+    </figure>
+  </div>
+  <p class="case-image-caption" style="text-align:center; margin-top:-8px;">Mismo motor, mismo wrapper SCORM — la diferencia de paleta y tono la resuelve el sistema de diseño, no una reconstrucción</p>
+
+  <div class="case-image-pair">
+    <figure>
+      <span class="tag">El alumno explora 7 factores de riesgo sin cambiar de pantalla</span>
+      <picture><source srcset="img/kit_cardio_factores.webp" type="image/webp"><img loading="lazy" alt="Factores de riesgo cardiovascular" src="img/kit_cardio_factores.jpg"></picture>
+    </figure>
+    <figure>
+      <span class="tag">Cada factor abre su propia ficha con el dato clave</span>
+      <picture><source srcset="img/kit_cardio_colesterol.webp" type="image/webp"><img loading="lazy" alt="Ficha de colesterol alto dentro del curso" src="img/kit_cardio_colesterol.jpg"></picture>
+    </figure>
+  </div>
+
+  <figure class="case-image">
+    <picture><source srcset="img/kit_cardio_video.webp" type="image/webp"><img loading="lazy" alt="Video sobre riesgo cardiovascular" src="img/kit_cardio_video.jpg"></picture>
+    <figcaption class="case-image-caption">Video con transcripción accesible, integrado con el mismo mecanismo de pop-up que usa Surtido sin venta</figcaption>
+  </figure>
+</div>
+
+<!-- 05 El pipeline -->
+<div class="case-section-narrow reveal">
+  <div class="case-section-tag">05 · Cómo funciona</div>
+  <h2>El camino de <span class="grad">PDF a SCORM</span>.</h2>
+  <p>No hay magia — hay un proceso claro que se repite curso a curso, cada vez más rápido:</p>
+</div>
+
+<div class="case-section reveal">
+  <div class="method-grid reveal-stagger">
+    <div class="method-item">
+      <div class="method-num">01</div>
+      <div class="method-title">PDF de diseño</div>
+      <p class="method-desc">El diseñador entrega el curso maquetado, diapositiva por diapositiva, en la proporción de trabajo fija del sistema.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">02</div>
+      <div class="method-title">Exportación por capas</div>
+      <p class="method-desc">Cada página se exporta a fondo + piezas de contenido con alfa real — texto, tarjetas, personajes — registradas pixel a pixel.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">03</div>
+      <div class="method-title">Posicionamiento en código</div>
+      <p class="method-desc">Cada pieza se ubica en porcentajes contra el tamaño real de la imagen, no en píxeles — se recalcula solo en cualquier pantalla.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">04</div>
+      <div class="method-title">Interactividad declarada</div>
+      <p class="method-desc">Botones invisibles sobre las zonas clickeables del PDF activan capas, pop-ups y gamificación — sin reconstruir nada a mano.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">05</div>
+      <div class="method-title">Empaquetado SCORM</div>
+      <p class="method-desc">El motor se conecta al wrapper SCORM 1.2: progreso, tiempo, bookmark de reingreso. Un solo archivo, compatible con cualquier LMS.</p>
+    </div>
+    <div class="method-item">
+      <div class="method-num">06</div>
+      <div class="method-title">Verificación automática</div>
+      <p class="method-desc">Una suite de tests corre contra el paquete final: hitboxes, accesibilidad de teclado, auditoría profunda — antes de entregarlo, no después de que falle.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Cierre / Quote -->
+<div class="case-section-narrow reveal">
+  <div class="case-highlight">
+    <div class="case-highlight-label">Por qué esto importa</div>
+    <p>Esto no es "un curso hecho distinto". Es <strong>una forma nueva de producir contenido de aprendizaje a escala</strong> — con menos fricción de licencias, más fidelidad de diseño, y un sistema que cada curso nuevo hereda en vez de reconstruir. Es la parte del trabajo que menos se ve y más cambia el resultado final.</p>
+  </div>
+</div>
+
+<!-- Case nav -->
+<div class="case-nav">
+  <a href="caso_transformacion.html" class="case-nav-item">
+    <div class="case-nav-direction">← Anterior · Caso 01</div>
+    <div class="case-nav-title">Siete años transformando el e-learning</div>
+  </a>
+  <a href="caso_coto.html" class="case-nav-item case-nav-item--next">
+    <div class="case-nav-direction">Siguiente · Caso 03</div>
+    <div class="case-nav-title">Medios de Pago · El método de punta a punta</div>
+  </a>
+</div>
+
+<!-- Footer -->
+<section class="footer-cta">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-cta-tag">Trabajemos juntos</div>
+      <h2>¿Tenés un proyecto de formación que <span class="grad">merece</span> ser una experiencia?</h2>
+      <p class="footer-cta-sub">Si buscás diseño instruccional, producción de e-learning con IA o una mirada integral sobre tu contenido, hablemos.</p>
+      <div class="contact-actions">
+        <a href="mailto:dami.lencina21@gmail.com" class="btn btn-light">
+          Escribime
+          <svg class="btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/damian-ezequiel-lencina/" target="_blank" rel="noopener" class="btn btn-dark-ghost">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="footer-fin">
+      <div class="footer-fin-text">End of file</div>
+      <div class="footer-fin-meta">© <span class="footer-year">2026</span> · DL · v2.0/Z</div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <div class="lightbox-img-wrap"><img loading="lazy" id="lightboxImg" src="" alt=""></div>
+</div>
+
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>

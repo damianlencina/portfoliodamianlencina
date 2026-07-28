@@ -26,6 +26,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://damianlencina.com/caso_kit.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://damianlencina.com/caso_coto.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

@@ -63,6 +63,11 @@
       position: relative;
       overflow: hidden;
     }
+    nav#nav { background: transparent; }
+    #nav .nav-links a { color: rgba(255,255,255,0.7); }
+    #nav .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    #nav .nav-links a.nav-cta { color: var(--bg-dark); background: #fff; }
+    #nav .nav-links a.nav-cta:hover { background: rgba(255,255,255,0.85); }
     .nf::before {
       content: '';
       position: absolute;
@@ -163,9 +168,22 @@
 <a href="#main" class="skip-link">Saltar al contenido principal</a>
 
 
-<!-- NAV mínima -->
+<!-- NAV -->
 <nav id="nav">
   <a href="index.html" class="nav-mark" style="color: var(--ink-invert);">DL <span style="color: rgba(255,255,255,0.5);">·</span> 404</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#trabajo">Trabajo</a></li>
+    <li><a href="metodo.html">Método</a></li>
+    <li><a href="notas.html">Notas</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="servicios.html">Servicios</a></li>
+    <li><a href="index.html#contacto" class="nav-cta">Hablemos</a></li>
+  </ul>
+  <div class="nav-end">
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menú" aria-expanded="false" style="filter: invert(1);">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <section id="main" class="nf">
@@ -187,7 +205,7 @@
         ← Volver al portfolio
       </a>
       <a href="caso_ia.html" class="btn btn-dark-ghost">
-        Conocé Foco Estudio →
+        Ver cómo construí esto →
       </a>
     </div>
 
