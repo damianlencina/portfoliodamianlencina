@@ -169,8 +169,8 @@
     display: block;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: clamp(28px, 2.8vw, 40px);
-    line-height: 1;
+    font-size: clamp(24px, 2.3vw, 33px);
+    line-height: 1.1;
     letter-spacing: -0.03em;
     color: transparent;
     background: var(--aurora-grad-text);
@@ -207,6 +207,19 @@
     grid-template-columns: 260px 1fr;
     gap: 48px;
   }
+  .etapa-visual {
+    border-radius: var(--radius-l);
+    overflow: hidden;
+    border: 1px solid var(--ink-line-soft);
+    background: var(--bg-tint);
+    align-self: start;
+  }
+  .etapa-visual img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+  }
   .etapa-detail-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -216,6 +229,8 @@
     .etapa-head { grid-template-columns: 1fr; gap: 16px; }
     .etapa-detail { grid-template-columns: 1fr; gap: 32px; }
     .etapa-detail-content { grid-template-columns: 1fr; gap: 24px; }
+    .etapa-visual { max-width: 320px; }
+    .etapa-visual img { aspect-ratio: 16/10; }
   }
 
   .etapa-block {
@@ -524,7 +539,7 @@
   </div>
 
   <div class="etapa-detail">
-    <div></div>
+    <div class="etapa-visual"><picture><source srcset="img/antes_moodle_viejo.webp" type="image/webp"><img loading="lazy" alt="Estado inicial del sistema de formación antes del diagnóstico" src="img/antes_moodle_viejo.jpg"></picture></div>
     <div class="etapa-detail-content">
       <div class="etapa-block">
         <div class="etapa-block-label">Qué hago</div>
@@ -572,13 +587,13 @@
     <div>
       <h2>Guion y sistema <span class="grad">visual</span>.</h2>
       <p class="etapa-intro">
-        El curso se decide acá, no en producción. Armamos el <strong>guion instruccional completo</strong> (qué dice cada pantalla, qué se muestra, qué tiene que hacer el usuario) y el storyboard visual con identidad propia. Todo se aprueba antes de tocar Storyline.
+        El curso se decide acá, no en producción. Armamos el <strong>guion instruccional completo</strong> (qué dice cada pantalla, qué se muestra, qué tiene que hacer el usuario) y el storyboard visual con identidad propia. Todo se aprueba antes de entrar en producción.
       </p>
     </div>
   </div>
 
   <div class="etapa-detail">
-    <div></div>
+    <div class="etapa-visual"><picture><source srcset="img/mp_illustrator_general.webp" type="image/webp"><img loading="lazy" alt="Storyboard y sistema visual en Illustrator" src="img/mp_illustrator_general.jpg"></picture></div>
     <div class="etapa-detail-content">
       <div class="etapa-block">
         <div class="etapa-block-label">Qué hago</div>
@@ -626,18 +641,18 @@
     <div>
       <h2>Video, ilustración, <span class="grad">interactividad</span>.</h2>
       <p class="etapa-intro">
-        La etapa más visible y la que más se asocia al e-learning. Construimos todo lo que el usuario va a ver: diapositivas interactivas en Storyline, video filmado o animado, infografías a medida. <strong>Si hay rodaje, lo dirijo yo en planta.</strong>
+        La etapa más visible y la que más se asocia al e-learning. Construimos todo lo que el usuario va a ver: diapositivas interactivas (en mi kit propio con IA o en Storyline, según el proyecto), video filmado o animado, infografías a medida. <strong>Si hay rodaje, lo dirijo yo en planta.</strong>
       </p>
     </div>
   </div>
 
   <div class="etapa-detail">
-    <div></div>
+    <div class="etapa-visual"><picture><source srcset="img/kit_surtido_laboratorio.webp" type="image/webp"><img loading="lazy" alt="Interactividad construida en curso real" src="img/kit_surtido_laboratorio.jpg"></picture></div>
     <div class="etapa-detail-content">
       <div class="etapa-block">
         <div class="etapa-block-label">Qué hago</div>
         <ul>
-          <li>Armado en <strong>Articulate Storyline 360</strong>: capas, interactividad, navegación</li>
+          <li>Armado interactivo: <strong>kit propio con IA</strong> o Articulate Storyline 360, según el proyecto</li>
           <li>Producción audiovisual: rodaje, edición en Premiere, motion en After Effects</li>
           <li>Ilustración y diseño de elementos visuales en Illustrator</li>
           <li>Locución y diseño sonoro si corresponde</li>
@@ -686,7 +701,7 @@
   </div>
 
   <div class="etapa-detail">
-    <div></div>
+    <div class="etapa-visual"><picture><source srcset="img/mp_moodle_curso.webp" type="image/webp"><img loading="lazy" alt="Curso publicado en Moodle" src="img/mp_moodle_curso.jpg"></picture></div>
     <div class="etapa-detail-content">
       <div class="etapa-block">
         <div class="etapa-block-label">Qué hago</div>
