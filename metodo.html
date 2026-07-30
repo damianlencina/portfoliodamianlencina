@@ -213,13 +213,21 @@
     border: 1px solid var(--ink-line-soft);
     background: var(--bg-tint);
     align-self: start;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.4s var(--ease-out);
+  }
+  .etapa-visual:hover {
+    border-color: var(--ink-line);
+    box-shadow: var(--shadow-m);
+    transform: translateY(-3px);
   }
   .etapa-visual img {
     width: 100%;
     aspect-ratio: 4/5;
     object-fit: cover;
     display: block;
+    transition: transform 0.5s var(--ease-out);
   }
+  .etapa-visual:hover img { transform: scale(1.04); }
   .etapa-detail-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -498,7 +506,7 @@
     No improviso. Cada curso que produje en los últimos siete años pasó por <strong>el mismo flujo de cuatro etapas</strong>: diagnóstico, diseño, producción e implementación. Es lo que hace que la calidad sea repetible — y lo que vas a ver acá en detalle.
   </p>
 
-  <div class="metodo-overview">
+  <div class="metodo-overview reveal-stagger">
     <div class="metodo-overview-item">
       <div class="metodo-overview-num">01 · Diagnóstico</div>
       <div class="metodo-overview-title">Entender</div>
@@ -524,7 +532,7 @@
 
 <!-- ETAPA 01 -->
 <section class="etapa">
-  <div class="etapa-head">
+  <div class="etapa-head reveal">
     <div class="etapa-num-block">
       Etapa 01
       <span class="big">Diagnóstico</span>
@@ -539,8 +547,8 @@
   </div>
 
   <div class="etapa-detail">
-    <div class="etapa-visual"><picture><source srcset="img/antes_moodle_viejo.webp" type="image/webp"><img loading="lazy" alt="Estado inicial del sistema de formación antes del diagnóstico" src="img/antes_moodle_viejo.jpg"></picture></div>
-    <div class="etapa-detail-content">
+    <div class="etapa-visual reveal"><picture><source srcset="img/antes_moodle_viejo.webp" type="image/webp"><img loading="lazy" alt="Estado inicial del sistema de formación antes del diagnóstico" src="img/antes_moodle_viejo.jpg"></picture></div>
+    <div class="etapa-detail-content reveal-stagger">
       <div class="etapa-block">
         <div class="etapa-block-label">Qué hago</div>
         <ul>
@@ -578,7 +586,7 @@
 
 <!-- ETAPA 02 -->
 <section class="etapa">
-  <div class="etapa-head">
+  <div class="etapa-head reveal">
     <div class="etapa-num-block">
       Etapa 02
       <span class="big">Diseño</span>
@@ -593,8 +601,8 @@
   </div>
 
   <div class="etapa-detail">
-    <div class="etapa-visual"><picture><source srcset="img/mp_illustrator_general.webp" type="image/webp"><img loading="lazy" alt="Storyboard y sistema visual en Illustrator" src="img/mp_illustrator_general.jpg"></picture></div>
-    <div class="etapa-detail-content">
+    <div class="etapa-visual reveal"><picture><source srcset="img/mp_illustrator_general.webp" type="image/webp"><img loading="lazy" alt="Storyboard y sistema visual en Illustrator" src="img/mp_illustrator_general.jpg"></picture></div>
+    <div class="etapa-detail-content reveal-stagger">
       <div class="etapa-block">
         <div class="etapa-block-label">Qué hago</div>
         <ul>
@@ -632,7 +640,7 @@
 
 <!-- ETAPA 03 -->
 <section class="etapa">
-  <div class="etapa-head">
+  <div class="etapa-head reveal">
     <div class="etapa-num-block">
       Etapa 03
       <span class="big">Producción</span>
@@ -647,8 +655,8 @@
   </div>
 
   <div class="etapa-detail">
-    <div class="etapa-visual"><picture><source srcset="img/kit_surtido_laboratorio.webp" type="image/webp"><img loading="lazy" alt="Interactividad construida en curso real" src="img/kit_surtido_laboratorio.jpg"></picture></div>
-    <div class="etapa-detail-content">
+    <div class="etapa-visual reveal"><picture><source srcset="img/kit_surtido_laboratorio.webp" type="image/webp"><img loading="lazy" alt="Interactividad construida en curso real" src="img/kit_surtido_laboratorio.jpg"></picture></div>
+    <div class="etapa-detail-content reveal-stagger">
       <div class="etapa-block">
         <div class="etapa-block-label">Qué hago</div>
         <ul>
@@ -686,7 +694,7 @@
 
 <!-- ETAPA 04 -->
 <section class="etapa">
-  <div class="etapa-head">
+  <div class="etapa-head reveal">
     <div class="etapa-num-block">
       Etapa 04
       <span class="big">Implementación</span>
@@ -701,8 +709,8 @@
   </div>
 
   <div class="etapa-detail">
-    <div class="etapa-visual"><picture><source srcset="img/mp_moodle_curso.webp" type="image/webp"><img loading="lazy" alt="Curso publicado en Moodle" src="img/mp_moodle_curso.jpg"></picture></div>
-    <div class="etapa-detail-content">
+    <div class="etapa-visual reveal"><picture><source srcset="img/mp_moodle_curso.webp" type="image/webp"><img loading="lazy" alt="Curso publicado en Moodle" src="img/mp_moodle_curso.jpg"></picture></div>
+    <div class="etapa-detail-content reveal-stagger">
       <div class="etapa-block">
         <div class="etapa-block-label">Qué hago</div>
         <ul>
@@ -740,7 +748,7 @@
 
 <!-- TIMELINE VISUAL -->
 <section class="timeline-section">
-  <div class="timeline-wrap">
+  <div class="timeline-wrap reveal">
     <div class="section-tag" style="margin-bottom: 16px;">El proyecto completo</div>
     <h2 class="section-h">De arranque a curso <span class="grad">publicado</span>.</h2>
     <p class="section-lead">Un proyecto promedio toma entre <strong>7 y 10 semanas</strong>, dependiendo del alcance y la disponibilidad del equipo del cliente. Las primeras dos etapas son las más participativas — las dos últimas, más autónomas de mi parte.</p>
@@ -781,7 +789,7 @@
   <h2 class="section-h">¿Y si <span class="grad">pasa esto</span>?</h2>
   <p class="section-lead">Los proyectos reales nunca son lineales. Estas son las situaciones que aparecen casi siempre — y cómo las manejo.</p>
 
-  <div class="escenarios-grid">
+  <div class="escenarios-grid reveal-stagger">
     <div class="escenario">
       <div class="escenario-q">¿Qué pasa si...</div>
       <div class="escenario-title">Cambian el contenido a mitad del proyecto?</div>
@@ -808,7 +816,7 @@
 
 <!-- FAQ -->
 <section class="faq-section">
-  <div class="faq-wrap">
+  <div class="faq-wrap reveal">
     <div class="section-tag" style="margin-bottom: 16px;">Preguntas frecuentes</div>
     <h2 class="section-h">Lo que <span class="grad">siempre</span> me preguntan.</h2>
 
