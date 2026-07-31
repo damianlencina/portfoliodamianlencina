@@ -171,9 +171,33 @@
   }
 
   // Hacer clickeables las imágenes dentro de casos
-  document.querySelectorAll('.case-image img, .case-image-pair img').forEach(img => {
+  document.querySelectorAll('.case-image img, .case-image-pair img, .case-carousel-item img').forEach(img => {
     img.style.cursor = 'zoom-in';
     img.addEventListener('click', () => openLightbox(img.src, img.alt));
+  });
+
+  /* ============================ Carrusel de imágenes en casos ============================ */
+  document.querySelectorAll('[data-carousel]').forEach(track => {
+    const wrap = track.closest('.case-carousel-wrap');
+    if (!wrap) return;
+    const prevBtn = wrap.querySelector('[data-carousel-prev]');
+    const nextBtn = wrap.querySelector('[data-carousel-next]');
+    const step = () => {
+      const item = track.querySelector('.case-carousel-item');
+      if (!item) return 300;
+      const gap = parseFloat(getComputedStyle(track).gap || 20) || 20;
+      return item.getBoundingClientRect().width + gap;
+    };
+    const updateArrows = () => {
+      const max = track.scrollWidth - track.clientWidth - 1;
+      if (prevBtn) prevBtn.disabled = track.scrollLeft <= 0;
+      if (nextBtn) nextBtn.disabled = track.scrollLeft >= max;
+    };
+    if (prevBtn) prevBtn.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    if (nextBtn) nextBtn.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+    track.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+    updateArrows();
   });
 
   if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
