@@ -220,18 +220,12 @@
   </div>
 </div>
 
-<!-- Antes y después - Pair de imágenes -->
+<!-- Ahora - imagen única (el "antes" ya se mostró arriba) -->
 <div class="case-section reveal">
-  <div class="case-image-pair">
-    <figure>
-      <span class="tag">Antes</span>
-      <picture><source srcset="img/antes_moodle_viejo.webp" type="image/webp"><img loading="lazy" alt="Diseño anterior — sin sistema" src="img/antes_moodle_viejo.jpg"></picture>
-    </figure>
-    <figure>
-      <span class="tag aurora">Ahora</span>
-      <picture><source srcset="img/despues_storyline_portada.webp" type="image/webp"><img loading="lazy" alt="Nuevo estándar — Medios de Pago" src="img/despues_storyline_portada.jpg"></picture>
-    </figure>
-  </div>
+  <figure class="case-image">
+    <picture><source srcset="img/despues_storyline_portada.webp" type="image/webp"><img loading="lazy" alt="Nuevo estándar — Medios de Pago" src="img/despues_storyline_portada.jpg"></picture>
+    <figcaption class="case-image-caption">Ahora — el nuevo estándar visual, aplicado a cada curso nuevo</figcaption>
+  </figure>
 </div>
 
 <!-- El equipo y el sistema -->
@@ -240,6 +234,43 @@
   <h2>De uno a cuatro. Un <span class="grad">equipo</span> que construye.</h2>
   <p>Lo que empezó como un trabajo de una persona hoy es un equipo de cuatro: dos diseñadores, una comunicadora y yo coordinando. La diferencia no es sólo de cantidad — es de capacidad. Podemos producir más, sí, pero también podemos pensar más profundo, iterar más rápido, sostener un estándar de calidad que antes era imposible.</p>
   <p>Y atrás del equipo, un sistema. La <strong>Moodle institucional</strong>, el manual de diseño, los templates reutilizables, los procesos documentados. Todo lo que hace que el conocimiento no dependa de una persona.</p>
+</div>
+
+<!-- Un sistema, muchos cursos — carrusel -->
+<div class="case-section-narrow reveal">
+  <div class="case-section-tag">El sistema en acción</div>
+  <h2>Un sistema, no una <span class="grad">pieza</span>.</h2>
+  <p>La prueba de que es un sistema y no una pieza suelta: el mismo criterio de diseño, la misma paleta y la misma lógica de guion se repiten curso tras curso, en áreas completamente distintas — de medios de pago a nutrición, de seguridad a producto.</p>
+</div>
+
+<div class="case-section reveal">
+  <div class="case-carousel-wrap">
+    <button class="case-carousel-arrow" type="button" data-carousel-prev aria-label="Curso anterior">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="case-carousel" data-carousel>
+      <figure class="case-carousel-item">
+        <picture><source srcset="img/mp_slide_01_portada.webp" type="image/webp"><img loading="lazy" alt="Portada del curso Medios de Pago" src="img/mp_slide_01_portada.jpg"></picture>
+        <figcaption class="case-image-caption">Medios de Pago — punto de venta</figcaption>
+      </figure>
+      <figure class="case-carousel-item">
+        <picture><source srcset="img/kit_surtido_portada.webp" type="image/webp"><img loading="lazy" alt="Portada del curso Surtido sin venta" src="img/kit_surtido_portada.jpg"></picture>
+        <figcaption class="case-image-caption">Surtido sin venta — mercadería</figcaption>
+      </figure>
+      <figure class="case-carousel-item">
+        <picture><source srcset="img/kit_cardio_portada.webp" type="image/webp"><img loading="lazy" alt="Portada del curso de prevención cardiovascular" src="img/kit_cardio_portada.jpg"></picture>
+        <figcaption class="case-image-caption">Prevención cardiovascular — salud</figcaption>
+      </figure>
+      <figure class="case-carousel-item">
+        <picture><source srcset="img/mp_illustrator_general.webp" type="image/webp"><img loading="lazy" alt="Trabajo de diseño en Illustrator, base del sistema visual" src="img/mp_illustrator_general.jpg"></picture>
+        <figcaption class="case-image-caption">El manual de diseño detrás — mismo criterio, cada vez</figcaption>
+      </figure>
+    </div>
+    <button class="case-carousel-arrow" type="button" data-carousel-next aria-label="Curso siguiente">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+  <p class="case-carousel-hint">← deslizá o usá las flechas →</p>
 </div>
 
 <!-- Sistema visual -->
