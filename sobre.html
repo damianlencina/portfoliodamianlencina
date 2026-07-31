@@ -153,6 +153,27 @@
       color: var(--ink-mid);
     }
 
+    .timeline-older { display: contents; }
+    .timeline-older.is-hidden { display: none; }
+    .timeline-toggle {
+      background: var(--bg-tint);
+      border: none;
+      width: 100%;
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: var(--type-mono);
+      font-size: var(--t-tag);
+      color: var(--ink-dim);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .timeline-toggle:hover { background: var(--ink-line-soft); color: var(--ink); }
+    .timeline-toggle .toggle-icon { transition: transform 0.25s var(--ease-out); }
+    .timeline-toggle[aria-expanded="true"] .toggle-icon { transform: rotate(45deg); }
+
     /* Tools */
     .tools-wrap {
       max-width: var(--content-width);
@@ -300,34 +321,40 @@
   <div class="timeline-wrap reveal">
     <div class="timeline-label">Recorrido</div>
     <div class="timeline-items">
-      <div class="timeline-item">
-        <div class="timeline-year">2016</div>
-        <div>
-          <div class="timeline-title">Magoya Producciones</div>
-          <div class="timeline-desc">Inicio del proyecto audiovisual independiente. Cortometrajes, críticas y festivales.</div>
+      <div class="timeline-older is-hidden" id="timelineOlder">
+        <div class="timeline-item">
+          <div class="timeline-year">2016</div>
+          <div>
+            <div class="timeline-title">Magoya Producciones</div>
+            <div class="timeline-desc">Inicio del proyecto audiovisual independiente. Cortometrajes, críticas y festivales.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2018</div>
+          <div>
+            <div class="timeline-title">Lic. Comunicación Social</div>
+            <div class="timeline-desc">Graduación en la UNM con orientación en comunicación digital y producción audiovisual.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2019</div>
+          <div>
+            <div class="timeline-title">Ingreso a COTO CICSA</div>
+            <div class="timeline-desc">Primer contacto con el e-learning corporativo. Diseño de cursos, Moodle, Storyline.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2021</div>
+          <div>
+            <div class="timeline-title">Primer video propio</div>
+            <div class="timeline-desc">Rodaje en planta para un curso corporativo. La línea entre e-learning y audiovisual se borra.</div>
+          </div>
         </div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2018</div>
-        <div>
-          <div class="timeline-title">Lic. Comunicación Social</div>
-          <div class="timeline-desc">Graduación en la UNM con orientación en comunicación digital y producción audiovisual.</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2019</div>
-        <div>
-          <div class="timeline-title">Ingreso a COTO CICSA</div>
-          <div class="timeline-desc">Primer contacto con el e-learning corporativo. Diseño de cursos, Moodle, Storyline.</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2021</div>
-        <div>
-          <div class="timeline-title">Primer video propio</div>
-          <div class="timeline-desc">Rodaje en planta para un curso corporativo. La línea entre e-learning y audiovisual se borra.</div>
-        </div>
-      </div>
+      <button type="button" class="timeline-toggle" data-toggle-older="timelineOlder" data-toggle-hide-label="Ocultar los primeros años" aria-expanded="false">
+        <span class="toggle-label">Ver los primeros años (2016 → 2021)</span>
+        <span class="toggle-icon">+</span>
+      </button>
       <div class="timeline-item">
         <div class="timeline-year">2023</div>
         <div>

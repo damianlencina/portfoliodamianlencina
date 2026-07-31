@@ -212,6 +212,20 @@
     }
   });
 
+  /* ============================ Toggle "ver más" genérico (timeline, etc.) ============================ */
+  document.querySelectorAll('[data-toggle-older]').forEach(btn => {
+    const target = document.getElementById(btn.getAttribute('data-toggle-older'));
+    if (!target) return;
+    const label = btn.querySelector('.toggle-label');
+    const showText = label ? label.textContent : '';
+    const hideText = btn.getAttribute('data-toggle-hide-label') || 'Ocultar';
+    btn.addEventListener('click', () => {
+      const nowHidden = target.classList.toggle('is-hidden');
+      btn.setAttribute('aria-expanded', String(!nowHidden));
+      if (label) label.textContent = nowHidden ? showText : hideText;
+    });
+  });
+
   /* ============================ Año dinámico en footer ============================ */
   document.querySelectorAll('.footer-year').forEach(el => {
     el.textContent = new Date().getFullYear();

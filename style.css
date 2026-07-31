@@ -2324,6 +2324,38 @@ section { padding: var(--gap-3xl) var(--side-pad); position: relative; }
   .work-carousel-hint { display: none; }
 }
 
+/* --- Bloque desplegable genérico (details/summary) --- */
+.detail-toggle {
+  border: 1px solid var(--ink-line-soft);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  margin: 24px 0;
+}
+.detail-toggle summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 600;
+  font-size: var(--t-body);
+  color: var(--ink);
+  transition: background 0.2s;
+}
+.detail-toggle summary:hover { background: var(--bg-tint); }
+.detail-toggle summary::-webkit-details-marker { display: none; }
+.detail-toggle summary .toggle-icon {
+  font-family: var(--type-mono);
+  font-size: 18px;
+  color: var(--ink-dim);
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease-out);
+}
+.detail-toggle[open] summary .toggle-icon { transform: rotate(45deg); }
+.detail-toggle-body { padding: 4px 24px 28px; }
+
 /* --- Case page image carousel (con flechas) --- */
 .case-carousel-wrap {
   display: flex;

@@ -308,7 +308,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
-    margin-bottom: 48px;
   }
   .servicio-incluye-block {
     background: var(--bg-tint);
@@ -1220,31 +1219,36 @@
     </figure>
   </div>
 
-  <div class="servicio-incluye reveal-stagger">
-    <div class="servicio-incluye-block si">
-      <div class="servicio-sit-label">Qué incluye</div>
-      <ul>
-        <li><strong>Diagnóstico</strong> con referentes del área (1-2 sesiones)</li>
-        <li>Guion instruccional completo y aprobado</li>
-        <li>Sistema visual propio del curso</li>
-        <li>Producción interactiva: <strong>kit propio con IA</strong> o Storyline, según el proyecto</li>
-        <li>Video corporativo filmado (1-3 minutos)</li>
-        <li>Evaluación con métricas de aprendizaje</li>
-        <li>Publicación SCORM en tu plataforma</li>
-        <li>30 días de soporte post-implementación</li>
-      </ul>
+  <details class="detail-toggle reveal">
+    <summary>Qué incluye y qué no <span class="toggle-icon">+</span></summary>
+    <div class="detail-toggle-body">
+      <div class="servicio-incluye">
+        <div class="servicio-incluye-block si">
+          <div class="servicio-sit-label">Qué incluye</div>
+          <ul>
+            <li><strong>Diagnóstico</strong> con referentes del área (1-2 sesiones)</li>
+            <li>Guion instruccional completo y aprobado</li>
+            <li>Sistema visual propio del curso</li>
+            <li>Producción interactiva: <strong>kit propio con IA</strong> o Storyline, según el proyecto</li>
+            <li>Video corporativo filmado (1-3 minutos)</li>
+            <li>Evaluación con métricas de aprendizaje</li>
+            <li>Publicación SCORM en tu plataforma</li>
+            <li>30 días de soporte post-implementación</li>
+          </ul>
+        </div>
+        <div class="servicio-incluye-block no">
+          <div class="servicio-sit-label">Qué NO incluye</div>
+          <ul>
+            <li>Licencias de software (Articulate, Adobe)</li>
+            <li>Locuciones profesionales en otros idiomas</li>
+            <li>Actores externos para video (uso personal de tu equipo)</li>
+            <li>Implementación de plataforma LMS desde cero</li>
+            <li>Mantenimiento mensual post-30 días</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="servicio-incluye-block no">
-      <div class="servicio-sit-label">Qué NO incluye</div>
-      <ul>
-        <li>Licencias de software (Articulate, Adobe)</li>
-        <li>Locuciones profesionales en otros idiomas</li>
-        <li>Actores externos para video (uso personal de tu equipo)</li>
-        <li>Implementación de plataforma LMS desde cero</li>
-        <li>Mantenimiento mensual post-30 días</li>
-      </ul>
-    </div>
-  </div>
+  </details>
 
   <a href="caso_kit.html" class="servicio-caso">
     <div class="servicio-caso-text">
@@ -1340,31 +1344,36 @@
     <figcaption class="case-image-caption">Prueba real — frame de "Operaciones Especiales", filmado en sucursal con operadores reales</figcaption>
   </figure>
 
-  <div class="servicio-incluye reveal-stagger">
-    <div class="servicio-incluye-block si">
-      <div class="servicio-sit-label">Qué incluye</div>
-      <ul>
-        <li>Reunión inicial para entender objetivo</li>
-        <li>Guion + storyboard aprobados antes de rodaje</li>
-        <li>Rodaje en locación (1 día típicamente)</li>
-        <li>Edición en <strong>Premiere Pro</strong></li>
-        <li>Motion graphics y placas en After Effects</li>
-        <li>Locución profesional o uso de tu equipo</li>
-        <li>2 rondas de revisión incluidas</li>
-        <li>Entrega en MP4 1080p, formatos para redes y LMS</li>
-      </ul>
+  <details class="detail-toggle reveal">
+    <summary>Qué incluye y qué no <span class="toggle-icon">+</span></summary>
+    <div class="detail-toggle-body">
+      <div class="servicio-incluye">
+        <div class="servicio-incluye-block si">
+          <div class="servicio-sit-label">Qué incluye</div>
+          <ul>
+            <li>Reunión inicial para entender objetivo</li>
+            <li>Guion + storyboard aprobados antes de rodaje</li>
+            <li>Rodaje en locación (1 día típicamente)</li>
+            <li>Edición en <strong>Premiere Pro</strong></li>
+            <li>Motion graphics y placas en After Effects</li>
+            <li>Locución profesional o uso de tu equipo</li>
+            <li>2 rondas de revisión incluidas</li>
+            <li>Entrega en MP4 1080p, formatos para redes y LMS</li>
+          </ul>
+        </div>
+        <div class="servicio-incluye-block no">
+          <div class="servicio-sit-label">Qué NO incluye</div>
+          <ul>
+            <li>Equipo técnico de iluminación profesional (uso setup propio)</li>
+            <li>Drone (sí puedo coordinar con piloto externo)</li>
+            <li>Actores profesionales (sí podemos sumarlos como extra)</li>
+            <li>Música licenciada premium (uso bancos sin royalties)</li>
+            <li>Versiones en idiomas que no sean español/inglés</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="servicio-incluye-block no">
-      <div class="servicio-sit-label">Qué NO incluye</div>
-      <ul>
-        <li>Equipo técnico de iluminación profesional (uso setup propio)</li>
-        <li>Drone (sí puedo coordinar con piloto externo)</li>
-        <li>Actores profesionales (sí podemos sumarlos como extra)</li>
-        <li>Música licenciada premium (uso bancos sin royalties)</li>
-        <li>Versiones en idiomas que no sean español/inglés</li>
-      </ul>
-    </div>
-  </div>
+  </details>
 
   <a href="caso_coto.html#video" class="servicio-caso">
     <div class="servicio-caso-text">
@@ -1472,31 +1481,36 @@
     <figcaption class="case-image-caption">Prueba real — la Moodle institucional que armamos y seguimos operando en COTO</figcaption>
   </figure>
 
-  <div class="servicio-incluye reveal-stagger">
-    <div class="servicio-incluye-block si">
-      <div class="servicio-sit-label">Qué incluye</div>
-      <ul>
-        <li>Auditoría de formación actual</li>
-        <li>Implementación y configuración de <strong>Moodle LMS</strong></li>
-        <li>Diseño de arquitectura de categorías y cursos</li>
-        <li>Manual de estándares de producción</li>
-        <li>2-3 cursos piloto para sentar precedente</li>
-        <li>Capacitación al equipo interno (en vivo)</li>
-        <li>Documentación operativa completa</li>
-        <li>3 meses de acompañamiento</li>
-      </ul>
+  <details class="detail-toggle reveal">
+    <summary>Qué incluye y qué no <span class="toggle-icon">+</span></summary>
+    <div class="detail-toggle-body">
+      <div class="servicio-incluye">
+        <div class="servicio-incluye-block si">
+          <div class="servicio-sit-label">Qué incluye</div>
+          <ul>
+            <li>Auditoría de formación actual</li>
+            <li>Implementación y configuración de <strong>Moodle LMS</strong></li>
+            <li>Diseño de arquitectura de categorías y cursos</li>
+            <li>Manual de estándares de producción</li>
+            <li>2-3 cursos piloto para sentar precedente</li>
+            <li>Capacitación al equipo interno (en vivo)</li>
+            <li>Documentación operativa completa</li>
+            <li>3 meses de acompañamiento</li>
+          </ul>
+        </div>
+        <div class="servicio-incluye-block no">
+          <div class="servicio-sit-label">Qué NO incluye</div>
+          <ul>
+            <li>Hosting de Moodle (lo gestiona tu IT o te recomiendo proveedor)</li>
+            <li>Migración de contenidos legacy (se cotiza aparte)</li>
+            <li>Integraciones complejas con SAP, Workday, etc.</li>
+            <li>Cursos a producción más allá de los 2-3 piloto</li>
+            <li>Soporte permanente post-3 meses (puede pactarse aparte)</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="servicio-incluye-block no">
-      <div class="servicio-sit-label">Qué NO incluye</div>
-      <ul>
-        <li>Hosting de Moodle (lo gestiona tu IT o te recomiendo proveedor)</li>
-        <li>Migración de contenidos legacy (se cotiza aparte)</li>
-        <li>Integraciones complejas con SAP, Workday, etc.</li>
-        <li>Cursos a producción más allá de los 2-3 piloto</li>
-        <li>Soporte permanente post-3 meses (puede pactarse aparte)</li>
-      </ul>
-    </div>
-  </div>
+  </details>
 
   <a href="caso_transformacion.html" class="servicio-caso">
     <div class="servicio-caso-text">
