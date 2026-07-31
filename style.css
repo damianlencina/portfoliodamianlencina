@@ -2324,6 +2324,72 @@ section { padding: var(--gap-3xl) var(--side-pad); position: relative; }
   .work-carousel-hint { display: none; }
 }
 
+/* --- Tarjeta "caso relacionado" con thumbnail, para el cierre de notas --- */
+.nota-related {
+  max-width: var(--content-narrow);
+  margin: 0 auto 8px;
+}
+.nota-related-label {
+  font-family: var(--type-mono);
+  font-size: var(--t-tag);
+  color: var(--ink-dim);
+  margin-bottom: 12px;
+}
+.nota-related-link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid var(--ink-line-soft);
+  border-radius: var(--radius-l);
+  padding: 16px;
+  text-decoration: none;
+  transition: border-color 0.3s, transform 0.3s var(--ease-out);
+}
+.nota-related-link:hover { border-color: var(--ink-line); transform: translateY(-2px); }
+.nota-related-thumb {
+  flex: 0 0 140px;
+  aspect-ratio: 4/3;
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+.nota-related-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.nota-related-text { flex: 1; min-width: 0; }
+.nota-related-title {
+  font-size: var(--t-body);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+.nota-related-cta {
+  font-size: var(--t-small);
+  color: var(--ink);
+  font-weight: 500;
+}
+@media (max-width: 600px) {
+  .nota-related-thumb { flex: 0 0 96px; }
+}
+
+/* --- Botón "ver más / ver menos" genérico (timeline, archivos, etc.) --- */
+.timeline-toggle {
+  background: var(--bg-tint);
+  border: none;
+  width: 100%;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--type-mono);
+  font-size: var(--t-tag);
+  color: var(--ink-dim);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.timeline-toggle:hover { background: var(--ink-line-soft); color: var(--ink); }
+.timeline-toggle .toggle-icon { transition: transform 0.25s var(--ease-out); }
+.timeline-toggle[aria-expanded="true"] .toggle-icon { transform: rotate(45deg); }
+
 /* --- Bloque desplegable genérico (details/summary) --- */
 .detail-toggle {
   border: 1px solid var(--ink-line-soft);

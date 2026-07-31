@@ -327,6 +327,9 @@
       .video-cards-grid { grid-template-columns: 1fr; }
     }
 
+    .magoya-older { display: contents; }
+    .magoya-older.is-hidden { display: none; }
+
     .magoya-hero-logo {
       display: block;
       height: 40px;
@@ -547,6 +550,15 @@
   </div>
 </div>
 
+<div class="case-section-narrow reveal" style="text-align: center; padding-bottom: 0;">
+  <button type="button" class="timeline-toggle" style="border-radius: var(--radius-l); border: 1px solid var(--ink-line-soft);" data-toggle-older="magoyaOlder" data-toggle-hide-label="Ocultar el resto del archivo" aria-expanded="false">
+    <span class="toggle-label">Ver todo el archivo (5 piezas más)</span>
+    <span class="toggle-icon">+</span>
+  </button>
+</div>
+
+<div class="magoya-older is-hidden" id="magoyaOlder">
+
 <div class="case-section reveal">
   <div class="video-cards-grid">
 
@@ -659,6 +671,9 @@
 
   </div>
 </div>
+
+</div>
+<!-- /magoya-older -->
 
 <!-- Cierre -->
 <div class="case-section-narrow reveal">

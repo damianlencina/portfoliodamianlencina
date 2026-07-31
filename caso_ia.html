@@ -115,6 +115,11 @@
       color: var(--ink-invert);
       border-color: transparent;
     }
+    .chat-divider {
+      height: 1px;
+      background: var(--ink-line-soft);
+      margin: 4px 0 8px;
+    }
     .chat-time {
       font-family: var(--type-mono);
       font-size: var(--t-micro);
@@ -538,11 +543,9 @@
         <div class="chat-bubble">Tenés razón en las dos. Vamos por partes: el thumb se ve gigante porque la imagen viene en relación de aspecto muy ancha y rompe la grilla. Solución: limitar el alto y usar object-fit: cover.</div>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="case-section reveal">
-  <div class="chat-log">
+    <div class="chat-divider"></div>
+
     <div class="chat-msg">
       <div class="chat-avatar">DL</div>
       <div>
@@ -562,11 +565,9 @@
         <div class="chat-bubble">Entendido, tiene sentido.</div>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="case-section reveal">
-  <div class="chat-log">
+    <div class="chat-divider"></div>
+
     <div class="chat-msg">
       <div class="chat-avatar">DL</div>
       <div>
@@ -580,11 +581,9 @@
         <div class="chat-bubble">Había 6 valores distintos de max-width para texto (520, 560, 580, 600, 620, 680px). Todos son ahora var(--text-width) que es 64ch. Si cambiás una variable en :root, aplica a todo el sitio automáticamente.</div>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="case-section reveal">
-  <div class="chat-log">
+    <div class="chat-divider"></div>
+
     <div class="chat-msg">
       <div class="chat-avatar">DL</div>
       <div>
