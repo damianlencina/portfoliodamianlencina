@@ -235,6 +235,26 @@
       }
       .nota-card { padding: 28px 24px; }
     }
+
+    .nota-card-flex { display: flex; gap: 28px; align-items: center; }
+    .nota-card-thumb {
+      flex: 0 0 200px;
+      border-radius: var(--radius-m);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .nota-card-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s var(--ease-out);
+    }
+    .nota-card:hover .nota-card-thumb img { transform: scale(1.05); }
+    .nota-card-flex-text { flex: 1; min-width: 0; }
+    @media (max-width: 720px) {
+      .nota-card-flex { flex-direction: column; align-items: stretch; }
+      .nota-card-thumb { flex: 0 0 auto; width: 100%; aspect-ratio: 16/9; }
+    }
   </style>
 </head>
 <body class="case-page">
@@ -309,30 +329,44 @@
 
     <!-- Nota 2 -->
     <a href="nota_cine.html" class="nota-card" style="text-decoration: none;">
-      <div class="nota-meta">
-        <span class="nota-tag">Diseño</span>
-        <span class="nota-date">Abril 2026</span>
-        <span class="nota-time">· 3 min</span>
+      <div class="nota-card-flex">
+        <div class="nota-card-thumb">
+          <picture><source srcset="img/retrato_avatar.webp" type="image/webp"><img loading="lazy" alt="Damián Lencina" src="img/retrato_avatar.jpg"></picture>
+        </div>
+        <div class="nota-card-flex-text">
+          <div class="nota-meta">
+            <span class="nota-tag">Diseño</span>
+            <span class="nota-date">Abril 2026</span>
+            <span class="nota-time">· 3 min</span>
+          </div>
+          <h2 class="nota-title">Lo que el cine me enseñó sobre el <span class="grad">e-learning</span>.</h2>
+          <p class="nota-desc">
+            Hay una pregunta que me hago antes de empezar cualquier curso: ¿qué historia quiero contar? No qué contenidos quiero transmitir. <strong>Qué historia.</strong> Esa diferencia cambia todo lo que viene después.
+          </p>
+          <span class="nota-cta">Leer nota →</span>
+        </div>
       </div>
-      <h2 class="nota-title">Lo que el cine me enseñó sobre el <span class="grad">e-learning</span>.</h2>
-      <p class="nota-desc">
-        Hay una pregunta que me hago antes de empezar cualquier curso: ¿qué historia quiero contar? No qué contenidos quiero transmitir. <strong>Qué historia.</strong> Esa diferencia cambia todo lo que viene después.
-      </p>
-      <span class="nota-cta">Leer nota →</span>
     </a>
 
     <!-- Nota 3 -->
     <a href="nota_evaluacion.html" class="nota-card" style="text-decoration: none;">
-      <div class="nota-meta">
-        <span class="nota-tag">Diseño instruccional</span>
-        <span class="nota-date">Mayo 2026</span>
-        <span class="nota-time">· 5 min</span>
+      <div class="nota-card-flex">
+        <div class="nota-card-thumb">
+          <picture><source srcset="img/kit_surtido_minijuego.webp" type="image/webp"><img loading="lazy" alt="Minijuego de evaluación por escenas" src="img/kit_surtido_minijuego.jpg"></picture>
+        </div>
+        <div class="nota-card-flex-text">
+          <div class="nota-meta">
+            <span class="nota-tag">Diseño instruccional</span>
+            <span class="nota-date">Mayo 2026</span>
+            <span class="nota-time">· 5 min</span>
+          </div>
+          <h2 class="nota-title">Cómo diseñar una evaluación que no sea un <span class="grad">trámite</span>.</h2>
+          <p class="nota-desc">
+            La evaluación es la parte más subestimada del diseño instruccional. La mayoría son un formulario disfrazado de aprendizaje. <strong>Hay tres cosas que cambian eso</strong> — y ninguna requiere tecnología sofisticada.
+          </p>
+          <span class="nota-cta">Leer nota →</span>
+        </div>
       </div>
-      <h2 class="nota-title">Cómo diseñar una evaluación que no sea un <span class="grad">trámite</span>.</h2>
-      <p class="nota-desc">
-        La evaluación es la parte más subestimada del diseño instruccional. La mayoría son un formulario disfrazado de aprendizaje. <strong>Hay tres cosas que cambian eso</strong> — y ninguna requiere tecnología sofisticada.
-      </p>
-      <span class="nota-cta">Leer nota →</span>
     </a>
 
   </div>
