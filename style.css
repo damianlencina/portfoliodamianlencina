@@ -1697,12 +1697,12 @@ section { padding: var(--gap-3xl) var(--side-pad); position: relative; }
 .case-section {
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 80px var(--side-pad);
+  padding: 40px var(--side-pad);
 }
 .case-section-narrow {
   max-width: var(--content-narrow);
   margin: 0 auto;
-  padding: 80px var(--side-pad);
+  padding: 40px var(--side-pad);
 }
 .case-section h2 {
   font-family: 'Inter', sans-serif;
@@ -1795,7 +1795,7 @@ section { padding: var(--gap-3xl) var(--side-pad); position: relative; }
 .case-image-pair img {
   width: 100%;
   display: block;
-  aspect-ratio: 16/10;
+  aspect-ratio: 16/9;
   object-fit: cover;
   transition: transform 0.5s var(--ease-out);
 }
@@ -1854,7 +1854,7 @@ section { padding: var(--gap-3xl) var(--side-pad); position: relative; }
   border-radius: var(--radius-l);
   overflow: hidden;
   border: 1px solid var(--ink-line-soft);
-  margin: 48px 0;
+  margin: 8px 0;
 }
 .case-stat { background: var(--bg); padding: 32px 24px; }
 .case-stat .label {
